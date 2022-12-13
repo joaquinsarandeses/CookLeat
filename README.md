@@ -25,7 +25,7 @@ Table of Contents
 
 
 <h1 align="left">Get in touch with the proyect</h1>
-- Reach us! **cookLeatORG@gmail.com** 📫
+- Reach us 📫! **cookLeatORG@gmail.com** 
 - <p></p>
 <p align="left">
 <a href="https://discord.gg/https://discord.gg/G2882bFZ5g" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="https://discord.gg/G2882bFZ5g" height="42" width="56" /></a>
