@@ -17,9 +17,9 @@ Table of Contents
 # Introduction
 <p> In this section we are going to briefly explain the bases of the proyect, we also going to set the standars and tools required.</p>
 <h2>What is CookLeat</h2>
-<p> CookLeat is social media app focused in sharing, exchanging and commenting all types of recipes </p>
+<p> CookLeat is social media app focused in sharing, exchanging and commenting all types of recipes with other cooking lovers.</p>
 <h2>Installation</h2>
-<p> The app will be done using Xcode 14 and the enviroment used will be SwiftUI. For the backend... (WIP)</p>
+<p> The app will be done using Xcode 14 and the enviroment used will be SwiftUI. For the backend, we will build an API via laravel to support and assist the app.</p>
 <h3 align="left">Languages and tools we will be using:</h3>
 <p align="left"> <a href="https://laravel.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-plain-wordmark.svg" alt="laravel" width="40" height="40"/> </a> <a href="https://developer.apple.com/swift/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/swift/swift-original.svg" alt="swift" width="40" height="40"/> </a> </p>
 
