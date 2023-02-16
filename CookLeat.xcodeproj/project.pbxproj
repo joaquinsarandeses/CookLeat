@@ -15,6 +15,7 @@
 		2D577A18299E7BF200AB1A6E /* PassForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A17299E7BF200AB1A6E /* PassForView.swift */; };
 		2D577A1A299E7E3500AB1A6E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A19299E7E3500AB1A6E /* HomeView.swift */; };
 		2D577A1C299E7F2400AB1A6E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A1B299E7F2400AB1A6E /* SearchView.swift */; };
+		2D577A1F299E821F00AB1A6E /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A1E299E821F00AB1A6E /* AddPostView.swift */; };
 		2D7F0610299AC2E500F90B55 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F060F299AC2E500F90B55 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		2D577A17299E7BF200AB1A6E /* PassForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassForView.swift; sourceTree = "<group>"; };
 		2D577A19299E7E3500AB1A6E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2D577A1B299E7F2400AB1A6E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		2D577A1E299E821F00AB1A6E /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
 		2D7F060F299AC2E500F90B55 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 				2D577A17299E7BF200AB1A6E /* PassForView.swift */,
 				2D577A19299E7E3500AB1A6E /* HomeView.swift */,
 				2D577A1B299E7F2400AB1A6E /* SearchView.swift */,
+				2D577A1E299E821F00AB1A6E /* AddPostView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				2D577A1C299E7F2400AB1A6E /* SearchView.swift in Sources */,
 				2D577A1A299E7E3500AB1A6E /* HomeView.swift in Sources */,
 				2D4A18702943A55D00827A5B /* ContentView.swift in Sources */,
+				2D577A1F299E821F00AB1A6E /* AddPostView.swift in Sources */,
 				2D4A186E2943A55D00827A5B /* CookLeatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
