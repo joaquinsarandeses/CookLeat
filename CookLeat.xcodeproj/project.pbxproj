@@ -18,6 +18,7 @@
 		2D577A1F299E821F00AB1A6E /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A1E299E821F00AB1A6E /* AddPostView.swift */; };
 		2D577A21299E84A300AB1A6E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A20299E84A300AB1A6E /* ProfileView.swift */; };
 		2D577A23299E855500AB1A6E /* Profile2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A22299E855500AB1A6E /* Profile2View.swift */; };
+		2D577A25299E864900AB1A6E /* CustomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A24299E864900AB1A6E /* CustomTab.swift */; };
 		2D7F0610299AC2E500F90B55 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F060F299AC2E500F90B55 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		2D577A1E299E821F00AB1A6E /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
 		2D577A20299E84A300AB1A6E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2D577A22299E855500AB1A6E /* Profile2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile2View.swift; sourceTree = "<group>"; };
+		2D577A24299E864900AB1A6E /* CustomTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab.swift; sourceTree = "<group>"; };
 		2D7F060F299AC2E500F90B55 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 				2D577A1B299E7F2400AB1A6E /* SearchView.swift */,
 				2D577A1E299E821F00AB1A6E /* AddPostView.swift */,
 				2D577A22299E855500AB1A6E /* Profile2View.swift */,
+				2D577A24299E864900AB1A6E /* CustomTab.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				2D7F0610299AC2E500F90B55 /* RegisterView.swift in Sources */,
 				2D577A15299E7B7E00AB1A6E /* SplashView.swift in Sources */,
 				2D577A1C299E7F2400AB1A6E /* SearchView.swift in Sources */,
+				2D577A25299E864900AB1A6E /* CustomTab.swift in Sources */,
 				2D577A23299E855500AB1A6E /* Profile2View.swift in Sources */,
 				2D577A1A299E7E3500AB1A6E /* HomeView.swift in Sources */,
 				2D4A18702943A55D00827A5B /* ContentView.swift in Sources */,
