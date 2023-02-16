@@ -21,6 +21,7 @@
 		2D577A25299E864900AB1A6E /* CustomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A24299E864900AB1A6E /* CustomTab.swift */; };
 		2D577A27299E914500AB1A6E /* FollowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A26299E914500AB1A6E /* FollowedView.swift */; };
 		2D577A29299E916300AB1A6E /* FollowersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A28299E916300AB1A6E /* FollowersView.swift */; };
+		2D577A2B299E933500AB1A6E /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A2A299E933500AB1A6E /* PostView.swift */; };
 		2D7F0610299AC2E500F90B55 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F060F299AC2E500F90B55 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		2D577A24299E864900AB1A6E /* CustomTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab.swift; sourceTree = "<group>"; };
 		2D577A26299E914500AB1A6E /* FollowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowedView.swift; sourceTree = "<group>"; };
 		2D577A28299E916300AB1A6E /* FollowersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersView.swift; sourceTree = "<group>"; };
+		2D577A2A299E933500AB1A6E /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		2D7F060F299AC2E500F90B55 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 				2D577A24299E864900AB1A6E /* CustomTab.swift */,
 				2D577A26299E914500AB1A6E /* FollowedView.swift */,
 				2D577A28299E916300AB1A6E /* FollowersView.swift */,
+				2D577A2A299E933500AB1A6E /* PostView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D577A2B299E933500AB1A6E /* PostView.swift in Sources */,
 				2D577A18299E7BF200AB1A6E /* PassForView.swift in Sources */,
 				2D577A21299E84A300AB1A6E /* ProfileView.swift in Sources */,
 				2D7F0610299AC2E500F90B55 /* RegisterView.swift in Sources */,
