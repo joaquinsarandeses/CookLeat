@@ -28,6 +28,8 @@ let data: [Cell] = [
 
 
 struct HomeView: View {
+    @Binding var selectedTab: TabViewList
+    
     var body: some View {
         ZStack{
             VStack{
@@ -174,6 +176,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(selectedTab: .constant(.home))
     }
 }
