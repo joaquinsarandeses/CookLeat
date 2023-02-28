@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct RegisterView: View {
+    
+    @ObservedObject var viewModel: ViewModel = ViewModel()
     @State var name: String = ""
     @State var password: String = ""
     @State var reppassword: String = ""
-    @State var mail: String = ""
+    @State var email: String = ""
+    @State var showAlert: Bool = false
     var body: some View {
         ZStack{
             bgc
@@ -26,7 +29,7 @@ struct RegisterView: View {
                 TextField("Nombre de usuario", text: $name)
                     .customDesign()
                     .padding(.top,80)
-                TextField("Correo electrónico", text: $mail)
+                TextField("Correo electrónico", text: $email)
                     .customDesign()
                     .padding(.top,5)
                 TextField("Contraseña", text: $password)
@@ -37,7 +40,7 @@ struct RegisterView: View {
                     .padding(.top,5)
                     
                 Button{
-                    
+                        viewModel.register(name: name,email: email, password: password)
                 }label: {
                     Text("Register")
                         .font(.title)
@@ -52,8 +55,15 @@ struct RegisterView: View {
                 
                 Text("¿Ya estás registrado?\(Text("Pulsa aquí.").underline())")
                     .foregroundColor(Color.white)
-                    .padding(.top,100)
+                    .padding(.top,60)
+                    .padding(.bottom,50)
                 
+            }
+            ZStack {
+                NavigationLink(destination: CustomTab(), isActive: $viewModel.shouldShowHome) {
+                    EmptyView()
+                }
+                .hidden()
             }
         }
         

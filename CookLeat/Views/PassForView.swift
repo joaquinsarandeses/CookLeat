@@ -48,7 +48,8 @@ struct PassForView: View {
                 
                 Text("¿No estás registrado?\(Text("Pulsa aquí.").underline())")
                     .foregroundColor(Color.white)
-                    .padding(.top,150)
+                    .padding(.top,120)
+                    .padding(.bottom,50)
                 
             }
         }
