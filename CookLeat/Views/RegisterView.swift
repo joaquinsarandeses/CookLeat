@@ -94,7 +94,7 @@ struct RegisterView: View {
         } else if password != reppassword {
             alertMessage = "Passwords don´t match."
             self.alert = true
-        } else if password.count < 8{
+        } else if password.count < 7{
             alertMessage = "Passwords must be at least 8 characters."
             self.alert = true
         } else {
