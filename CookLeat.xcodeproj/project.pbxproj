@@ -25,6 +25,7 @@
 		2D577A27299E914500AB1A6E /* FollowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A26299E914500AB1A6E /* FollowedView.swift */; };
 		2D577A29299E916300AB1A6E /* FollowersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A28299E916300AB1A6E /* FollowersView.swift */; };
 		2D577A2B299E933500AB1A6E /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A2A299E933500AB1A6E /* PostView.swift */; };
+		2D7A9F1629AF726C00B4C943 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A9F1529AF726C00B4C943 /* Components.swift */; };
 		2D7F0610299AC2E500F90B55 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F060F299AC2E500F90B55 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		2D577A26299E914500AB1A6E /* FollowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowedView.swift; sourceTree = "<group>"; };
 		2D577A28299E916300AB1A6E /* FollowersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersView.swift; sourceTree = "<group>"; };
 		2D577A2A299E933500AB1A6E /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		2D7A9F1529AF726C00B4C943 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		2D7F060F299AC2E500F90B55 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				2D42E6A229AD6A2E000B1879 /* ViewModels */,
 				2D42E69F29AD6996000B1879 /* Data */,
 				2D577A16299E7B8700AB1A6E /* Views */,
+				2D7A9F1429AF725700B4C943 /* Components */,
 				2D4A18712943A55E00827A5B /* Assets.xcassets */,
 				2D4A18732943A55E00827A5B /* Preview Content */,
 			);
@@ -134,6 +137,14 @@
 				2D577A2A299E933500AB1A6E /* PostView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2D7A9F1429AF725700B4C943 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2D7A9F1529AF726C00B4C943 /* Components.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +224,7 @@
 				2D577A21299E84A300AB1A6E /* ProfileView.swift in Sources */,
 				2D7F0610299AC2E500F90B55 /* RegisterView.swift in Sources */,
 				2D577A15299E7B7E00AB1A6E /* SplashView.swift in Sources */,
+				2D7A9F1629AF726C00B4C943 /* Components.swift in Sources */,
 				2D577A1C299E7F2400AB1A6E /* SearchView.swift in Sources */,
 				2D577A25299E864900AB1A6E /* CustomTab.swift in Sources */,
 				2D42E6A129AD69C0000B1879 /* NetworkHelper.swift in Sources */,
