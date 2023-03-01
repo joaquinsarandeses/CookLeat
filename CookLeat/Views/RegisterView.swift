@@ -14,7 +14,8 @@ struct RegisterView: View {
     @State var password: String = ""
     @State var reppassword: String = ""
     @State var email: String = ""
-    @State var showAlert: Bool = false
+    @State private var alert = false
+    @State private var alertMessage = ""
     var body: some View {
         ZStack{
             bgc
@@ -32,15 +33,15 @@ struct RegisterView: View {
                 TextField("Correo electrónico", text: $email)
                     .customDesign()
                     .padding(.top,5)
-                TextField("Contraseña", text: $password)
+                SecureInputView("Contraseña", text: $password)
                     .customDesign()
                     .padding(.top,5)
-                TextField("Repite tu contraseña", text: $reppassword)
+                SecureInputView("Repite tu contraseña", text: $reppassword)
                     .customDesign()
                     .padding(.top,5)
                     
                 Button{
-                        viewModel.register(name: name,email: email, password: password)
+                        checkFields()
                 }label: {
                     Text("Register")
                         .font(.title)
@@ -50,8 +51,19 @@ struct RegisterView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color("BackBut"))
                         .cornerRadius(10)
-                }.padding(.horizontal,30)
+                }.alert("Error", isPresented: $alert) {
+                    Button {
+                        
+                    } label: {
+                        Text("OK")
+                    }
+                    
+                } message: {
+                    Text(alertMessage)
+                }
+                .padding(.horizontal,30)
                     .padding(.top,30)
+                    
                 
                 Text("¿Ya estás registrado?\(Text("Pulsa aquí.").underline())")
                     .foregroundColor(Color.white)
@@ -73,6 +85,21 @@ struct RegisterView: View {
         Color("BackA")
             .ignoresSafeArea()
         
+    }
+    
+    func checkFields(){
+        if email.isEmpty || password.isEmpty || reppassword.isEmpty || name.isEmpty{
+            alertMessage = "All fields must be filled."
+            self.alert = true
+        } else if password != reppassword {
+            alertMessage = "Passwords don´t match."
+            self.alert = true
+        } else if password.count < 8{
+            alertMessage = "Passwords must be at least 8 characters."
+            self.alert = true
+        } else {
+            viewModel.register(name: name, email: email, password: password)
+        }
     }
 }
 

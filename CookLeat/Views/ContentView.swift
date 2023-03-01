@@ -27,7 +27,7 @@ struct ContentView: View {
                     TextField("Nombre de usuario", text: $name)
                         .customDesign()
                         .padding(.top,80)
-                    SecureField("Contraseña", text: $password)
+                    SecureInputView("Contraseña", text: $password)
                         .customDesign()
                         .padding(.top,5)
                     NavigationLink{
