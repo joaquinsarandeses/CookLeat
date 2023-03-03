@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D3F4AD229B0027A006CF418 /* AddPostView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AD129B0027A006CF418 /* AddPostView-ViewModel.swift */; };
+		2D3F4AD529B0079C006CF418 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AD429B0079C006CF418 /* UserData.swift */; };
+		2D3F4AD729B00929006CF418 /* ProfileView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AD629B00929006CF418 /* ProfileView-ViewModel.swift */; };
+		2D3F4AD929B12942006CF418 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AD829B12942006CF418 /* UserDataModel.swift */; };
 		2D42E6A129AD69C0000B1879 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D42E6A029AD69C0000B1879 /* NetworkHelper.swift */; };
 		2D42E6A429AD6A5E000B1879 /* LoginView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D42E6A329AD6A5E000B1879 /* LoginView-ViewModel.swift */; };
 		2D42E6A629AE4AA4000B1879 /* RegisterView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D42E6A529AE4AA4000B1879 /* RegisterView-ViewModel.swift */; };
@@ -30,6 +34,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D3F4AC329AFB983006CF418 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2D3F4AD129B0027A006CF418 /* AddPostView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddPostView-ViewModel.swift"; sourceTree = "<group>"; };
+		2D3F4AD429B0079C006CF418 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		2D3F4AD629B00929006CF418 /* ProfileView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView-ViewModel.swift"; sourceTree = "<group>"; };
+		2D3F4AD829B12942006CF418 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		2D42E6A029AD69C0000B1879 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		2D42E6A329AD6A5E000B1879 /* LoginView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView-ViewModel.swift"; sourceTree = "<group>"; };
 		2D42E6A529AE4AA4000B1879 /* RegisterView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterView-ViewModel.swift"; sourceTree = "<group>"; };
@@ -64,21 +73,136 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D3F4AC429AFD5E3006CF418 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2D4A186F2943A55D00827A5B /* ContentView.swift */,
+				2D42E6A329AD6A5E000B1879 /* LoginView-ViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2D3F4AC529AFD611006CF418 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				2D7F060F299AC2E500F90B55 /* RegisterView.swift */,
+				2D42E6A529AE4AA4000B1879 /* RegisterView-ViewModel.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		2D3F4AC629AFD633006CF418 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2D577A20299E84A300AB1A6E /* ProfileView.swift */,
+				2D3F4AD629B00929006CF418 /* ProfileView-ViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		2D3F4AC729AFD644006CF418 /* PassFor */ = {
+			isa = PBXGroup;
+			children = (
+				2D577A17299E7BF200AB1A6E /* PassForView.swift */,
+			);
+			path = PassFor;
+			sourceTree = "<group>";
+		};
+		2D3F4AC829AFD653006CF418 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2D577A19299E7E3500AB1A6E /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2D3F4AC929AFD65D006CF418 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				2D577A1B299E7F2400AB1A6E /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		2D3F4ACA29AFD669006CF418 /* AddPost */ = {
+			isa = PBXGroup;
+			children = (
+				2D577A1E299E821F00AB1A6E /* AddPostView.swift */,
+				2D3F4AD129B0027A006CF418 /* AddPostView-ViewModel.swift */,
+			);
+			path = AddPost;
+			sourceTree = "<group>";
+		};
+		2D3F4ACB29AFD673006CF418 /* Profile2 */ = {
+			isa = PBXGroup;
+			children = (
+				2D577A22299E855500AB1A6E /* Profile2View.swift */,
+			);
+			path = Profile2;
+			sourceTree = "<group>";
+		};
+		2D3F4ACC29AFD680006CF418 /* Followed */ = {
+			isa = PBXGroup;
+			children = (
+				2D577A26299E914500AB1A6E /* FollowedView.swift */,
+			);
+			path = Followed;
+			sourceTree = "<group>";
+		};
+		2D3F4ACD29AFD68E006CF418 /* Followers */ = {
+			isa = PBXGroup;
+			children = (
+				2D577A28299E916300AB1A6E /* FollowersView.swift */,
+			);
+			path = Followers;
+			sourceTree = "<group>";
+		};
+		2D3F4ACE29AFD69E006CF418 /* PostView */ = {
+			isa = PBXGroup;
+			children = (
+				2D577A2A299E933500AB1A6E /* PostView.swift */,
+			);
+			path = PostView;
+			sourceTree = "<group>";
+		};
+		2D3F4ADA29B1294A006CF418 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2D3F4AD829B12942006CF418 /* UserDataModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2D3F4ADB29B12970006CF418 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				2D7A9F1429AF725700B4C943 /* Components */,
+				2D577A24299E864900AB1A6E /* CustomTab.swift */,
+				2D577A14299E7B7E00AB1A6E /* SplashView.swift */,
+				2D4A186D2943A55D00827A5B /* CookLeatApp.swift */,
+				2D3F4ACB29AFD673006CF418 /* Profile2 */,
+				2D3F4ACE29AFD69E006CF418 /* PostView */,
+				2D3F4ACD29AFD68E006CF418 /* Followers */,
+				2D3F4ACC29AFD680006CF418 /* Followed */,
+				2D3F4ACA29AFD669006CF418 /* AddPost */,
+				2D3F4AC929AFD65D006CF418 /* Search */,
+				2D3F4AC829AFD653006CF418 /* Home */,
+				2D3F4AC729AFD644006CF418 /* PassFor */,
+				2D3F4AC429AFD5E3006CF418 /* Login */,
+				2D3F4AC529AFD611006CF418 /* Register */,
+				2D3F4AC629AFD633006CF418 /* Profile */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		2D42E69F29AD6996000B1879 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				2D3F4ADA29B1294A006CF418 /* Models */,
 				2D42E6A029AD69C0000B1879 /* NetworkHelper.swift */,
+				2D3F4AD429B0079C006CF418 /* UserData.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		2D42E6A229AD6A2E000B1879 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				2D42E6A329AD6A5E000B1879 /* LoginView-ViewModel.swift */,
-				2D42E6A529AE4AA4000B1879 /* RegisterView-ViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		2D4A18612943A55D00827A5B = {
@@ -100,11 +224,9 @@
 		2D4A186C2943A55D00827A5B /* CookLeat */ = {
 			isa = PBXGroup;
 			children = (
-				2D4A186D2943A55D00827A5B /* CookLeatApp.swift */,
-				2D42E6A229AD6A2E000B1879 /* ViewModels */,
+				2D3F4ADB29B12970006CF418 /* Presentation */,
+				2D3F4AC329AFB983006CF418 /* Info.plist */,
 				2D42E69F29AD6996000B1879 /* Data */,
-				2D577A16299E7B8700AB1A6E /* Views */,
-				2D7A9F1429AF725700B4C943 /* Components */,
 				2D4A18712943A55E00827A5B /* Assets.xcassets */,
 				2D4A18732943A55E00827A5B /* Preview Content */,
 			);
@@ -117,26 +239,6 @@
 				2D4A18742943A55E00827A5B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		2D577A16299E7B8700AB1A6E /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				2D577A20299E84A300AB1A6E /* ProfileView.swift */,
-				2D7F060F299AC2E500F90B55 /* RegisterView.swift */,
-				2D4A186F2943A55D00827A5B /* ContentView.swift */,
-				2D577A14299E7B7E00AB1A6E /* SplashView.swift */,
-				2D577A17299E7BF200AB1A6E /* PassForView.swift */,
-				2D577A19299E7E3500AB1A6E /* HomeView.swift */,
-				2D577A1B299E7F2400AB1A6E /* SearchView.swift */,
-				2D577A1E299E821F00AB1A6E /* AddPostView.swift */,
-				2D577A22299E855500AB1A6E /* Profile2View.swift */,
-				2D577A24299E864900AB1A6E /* CustomTab.swift */,
-				2D577A26299E914500AB1A6E /* FollowedView.swift */,
-				2D577A28299E916300AB1A6E /* FollowersView.swift */,
-				2D577A2A299E933500AB1A6E /* PostView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		2D7A9F1429AF725700B4C943 /* Components */ = {
@@ -220,6 +322,7 @@
 				2D577A2B299E933500AB1A6E /* PostView.swift in Sources */,
 				2D42E6A629AE4AA4000B1879 /* RegisterView-ViewModel.swift in Sources */,
 				2D42E6A429AD6A5E000B1879 /* LoginView-ViewModel.swift in Sources */,
+				2D3F4AD729B00929006CF418 /* ProfileView-ViewModel.swift in Sources */,
 				2D577A18299E7BF200AB1A6E /* PassForView.swift in Sources */,
 				2D577A21299E84A300AB1A6E /* ProfileView.swift in Sources */,
 				2D7F0610299AC2E500F90B55 /* RegisterView.swift in Sources */,
@@ -235,6 +338,9 @@
 				2D577A29299E916300AB1A6E /* FollowersView.swift in Sources */,
 				2D577A1F299E821F00AB1A6E /* AddPostView.swift in Sources */,
 				2D4A186E2943A55D00827A5B /* CookLeatApp.swift in Sources */,
+				2D3F4AD529B0079C006CF418 /* UserData.swift in Sources */,
+				2D3F4AD929B12942006CF418 /* UserDataModel.swift in Sources */,
+				2D3F4AD229B0027A006CF418 /* AddPostView-ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +471,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CookLeat/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CookLeat/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -393,6 +502,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CookLeat/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CookLeat/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
