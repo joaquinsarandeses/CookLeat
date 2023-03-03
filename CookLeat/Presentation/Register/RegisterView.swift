@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegisterView: View {
-    
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: ViewModel = ViewModel()
     @State var name: String = ""
     @State var password: String = ""
@@ -33,10 +33,10 @@ struct RegisterView: View {
                 TextField("Correo electrónico", text: $email)
                     .customDesign()
                     .padding(.top,5)
-                SecureInputView("Contraseña", text: $password)
+                SecureField("Contraseña", text: $password)
                     .customDesign()
                     .padding(.top,5)
-                SecureInputView("Repite tu contraseña", text: $reppassword)
+                SecureField("Repite tu contraseña", text: $reppassword)
                     .customDesign()
                     .padding(.top,5)
                     
@@ -99,6 +99,7 @@ struct RegisterView: View {
             self.alert = true
         } else {
             viewModel.register(name: name, email: email, password: password)
+            self.presentationMode.wrappedValue.dismiss()
         }
     }
 }

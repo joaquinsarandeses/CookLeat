@@ -1,26 +1,28 @@
 //
-//  RegisterView-ViewModel.swift
+//  AddPostView-ViewModel.swift
 //  CookLeat
 //
-//  Created by joaquin sarandeses on 28/2/23.
+//  Created by joaquin sarandeses on 1/3/23.
 //
 
 import Foundation
 
-extension RegisterView {
+extension AddPostView {
     class ViewModel: ObservableObject {
-        @Published var shouldShowHome: Bool = false
+        @Published var shouldPost: Bool = false
         @Published var shouldShowErrorAlert: Bool = false
         
 
-        func register(name: String,email: String, password: String) {
+        func addPost(name: String,description: String, user: Int,category: Int, image: String) {
             
-            let url = "http://127.0.0.1:8000/api/users/registro"
+            let url = "http://127.0.0.1:8000/api/recipe/create"
             
             let dictionary: [String: Any] = [
                 "name" : name,
-                "email" : email,
-                "password" : password
+                "description" : description,
+                "user" : user,
+                "category": category,
+                "image": image
             ]
             
             NetworkHelper.shared.requestProvider(url: url, type: .PUT, params: dictionary) { data, response, error in
@@ -38,7 +40,7 @@ extension RegisterView {
         
         func onSuccess() {
             DispatchQueue.main.async {
-                self.shouldShowHome = true
+                self.shouldPost = true
                 }
         }
         

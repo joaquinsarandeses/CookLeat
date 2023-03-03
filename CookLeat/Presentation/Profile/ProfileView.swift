@@ -8,23 +8,45 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @ObservedObject var viewModel = ViewModel()
+   // @State var user: [viewModel.UserPresentationModel] = []
+    @State var image: UIImage?
     
-    @State var followers: Int = 0
-    @State var followed: Int = 0
-    @State var userName: String = "Aprobadme"
+    
+    
     var body: some View {
         ZStack{
             VStack{
                 navBar
+                Spacer()
+                Spacer()
                 
                 HStack{
-                    
-                    Image("ProfilePic")
-                        .padding(.trailing,20)
+                    if let data = Data(base64Encoded: viewModel.profile.image) {
+                                if let image = UIImage(data: data) {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .frame(width: 90, height: 90)
+                                        .clipShape(Circle())
+                                        .padding(.trailing,20)
+                                        
+                                } else {
+                                    Image("ProfilePic")
+                                        .foregroundColor(.red)
+                                        .frame(width: 60, height: 60)
+                                        .padding(.trailing,20)
+                                }
+                            } else {
+                                Image("ProfilePic")
+                                    .foregroundColor(.red)
+                                    .frame(width: 60, height: 60)
+                                    .padding(.trailing,20)
+                            }
                     VStack{
-                        Text("\(userName)")
+                        Text(viewModel.profile.name)
                             .font(.system(size: 30))
                             .fontWeight(.bold)
+                            .multilineTextAlignment(.leading)
                             .lineLimit(1)
                             .padding(.trailing,70)
                             .foregroundColor(Color("BackBut"))
@@ -33,7 +55,7 @@ struct ProfileView: View {
                         HStack{
                             
                             VStack{
-                                Text("\(followers)")
+                                Text("\(viewModel.profile.follows)")
                                     .fontWeight(.bold)
                                     .font(.system(size: 30))
                                 Text("Seguidores")
@@ -42,7 +64,7 @@ struct ProfileView: View {
                             }
                             .padding(.trailing,40)
                             VStack{
-                                Text("\(followers)")
+                                Text("\(viewModel.profile.followers)")
                                     .fontWeight(.bold)
                                     .font(.system(size: 30))
                                 Text("Seguidos")
@@ -52,6 +74,7 @@ struct ProfileView: View {
                             .padding(.trailing,20)
                         }
                     }
+
                 }
                 Spacer()
                 
@@ -94,6 +117,11 @@ struct ProfileView: View {
                 
             }
         }
+        .onAppear {
+            viewModel.getProfileData()
+            
+            
+                }
     }
     
     private  var navBar: some View {
