@@ -26,8 +26,16 @@ let data: [Cell] = [
     Cell(image: Image("logo"), title: "Title 7", subtitle: "Subtitle 7",examp: Image("Example"),cat: "Postre")
 ]
 
-
+struct Recent: Identifiable {
+    let id = UUID()
+    let image: Image
+    let title: String
+    let subtitle: String
+    let examp: Image
+    let cat: String
+}
 struct HomeView: View {
+    @ObservedObject var viewModel = ViewModel()
     @Binding var selectedTab: TabViewList
     
     var body: some View {
@@ -61,18 +69,18 @@ struct HomeView: View {
 
                 ScrollView(.horizontal){
                     LazyHStack {
-                        ForEach(data, id: \.id) { cell in
+                        ForEach(viewModel.recents, id: \.id) { recent in
                             VStack(alignment: .leading) {
-                                cell.examp
+                                Image("logo")
                                     .resizable()
                                     .frame(width: 150, height: 100)
                                     .cornerRadius(10)
-                                Text(cell.title)
+                                Text(recent.name)
                                     .font(.headline)
                                     .foregroundColor(Color("TextY"))
                                     .padding(5)
                                 
-                                Text(cell.subtitle)
+                                Text(recent.category)
                                     .font(.subheadline)
                                     .padding([.leading, .bottom], 5.0)
                             }
@@ -151,6 +159,9 @@ struct HomeView: View {
                 
                
             }
+        }
+        .onAppear(){
+            viewModel.getRecent()
         }
     }
     private  var navBar: some View {

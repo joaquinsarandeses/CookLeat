@@ -11,6 +11,8 @@
 		2D3F4AD529B0079C006CF418 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AD429B0079C006CF418 /* UserData.swift */; };
 		2D3F4AD729B00929006CF418 /* ProfileView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AD629B00929006CF418 /* ProfileView-ViewModel.swift */; };
 		2D3F4AD929B12942006CF418 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AD829B12942006CF418 /* UserDataModel.swift */; };
+		2D3F4AE429B2626A006CF418 /* HomeView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AE329B2626A006CF418 /* HomeView-ViewModel.swift */; };
+		2D3F4AE629B26502006CF418 /* RecipeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AE529B26502006CF418 /* RecipeDataModel.swift */; };
 		2D42E6A129AD69C0000B1879 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D42E6A029AD69C0000B1879 /* NetworkHelper.swift */; };
 		2D42E6A429AD6A5E000B1879 /* LoginView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D42E6A329AD6A5E000B1879 /* LoginView-ViewModel.swift */; };
 		2D42E6A629AE4AA4000B1879 /* RegisterView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D42E6A529AE4AA4000B1879 /* RegisterView-ViewModel.swift */; };
@@ -34,11 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D3F4AC329AFB983006CF418 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2D3F4AD129B0027A006CF418 /* AddPostView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddPostView-ViewModel.swift"; sourceTree = "<group>"; };
 		2D3F4AD429B0079C006CF418 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		2D3F4AD629B00929006CF418 /* ProfileView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView-ViewModel.swift"; sourceTree = "<group>"; };
 		2D3F4AD829B12942006CF418 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		2D3F4AE129B19102006CF418 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		2D3F4AE329B2626A006CF418 /* HomeView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView-ViewModel.swift"; sourceTree = "<group>"; };
+		2D3F4AE529B26502006CF418 /* RecipeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDataModel.swift; sourceTree = "<group>"; };
 		2D42E6A029AD69C0000B1879 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		2D42E6A329AD6A5E000B1879 /* LoginView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView-ViewModel.swift"; sourceTree = "<group>"; };
 		2D42E6A529AE4AA4000B1879 /* RegisterView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterView-ViewModel.swift"; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				2D577A19299E7E3500AB1A6E /* HomeView.swift */,
+				2D3F4AE329B2626A006CF418 /* HomeView-ViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				2D3F4AD829B12942006CF418 /* UserDataModel.swift */,
+				2D3F4AE529B26502006CF418 /* RecipeDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +214,7 @@
 		2D4A18612943A55D00827A5B = {
 			isa = PBXGroup;
 			children = (
+				2D3F4AE129B19102006CF418 /* info.plist */,
 				2D4A186C2943A55D00827A5B /* CookLeat */,
 				2D4A186B2943A55D00827A5B /* Products */,
 			);
@@ -225,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				2D3F4ADB29B12970006CF418 /* Presentation */,
-				2D3F4AC329AFB983006CF418 /* Info.plist */,
 				2D42E69F29AD6996000B1879 /* Data */,
 				2D4A18712943A55E00827A5B /* Assets.xcassets */,
 				2D4A18732943A55E00827A5B /* Preview Content */,
@@ -321,6 +327,7 @@
 			files = (
 				2D577A2B299E933500AB1A6E /* PostView.swift in Sources */,
 				2D42E6A629AE4AA4000B1879 /* RegisterView-ViewModel.swift in Sources */,
+				2D3F4AE429B2626A006CF418 /* HomeView-ViewModel.swift in Sources */,
 				2D42E6A429AD6A5E000B1879 /* LoginView-ViewModel.swift in Sources */,
 				2D3F4AD729B00929006CF418 /* ProfileView-ViewModel.swift in Sources */,
 				2D577A18299E7BF200AB1A6E /* PassForView.swift in Sources */,
@@ -329,6 +336,7 @@
 				2D577A15299E7B7E00AB1A6E /* SplashView.swift in Sources */,
 				2D7A9F1629AF726C00B4C943 /* Components.swift in Sources */,
 				2D577A1C299E7F2400AB1A6E /* SearchView.swift in Sources */,
+				2D3F4AE629B26502006CF418 /* RecipeDataModel.swift in Sources */,
 				2D577A25299E864900AB1A6E /* CustomTab.swift in Sources */,
 				2D42E6A129AD69C0000B1879 /* NetworkHelper.swift in Sources */,
 				2D577A23299E855500AB1A6E /* Profile2View.swift in Sources */,
@@ -470,8 +478,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CookLeat/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CookLeat/Info.plist;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = /Users/joako/Documents/GitHub/CookLeat/info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -501,8 +509,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CookLeat/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CookLeat/Info.plist;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = /Users/joako/Documents/GitHub/CookLeat/info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

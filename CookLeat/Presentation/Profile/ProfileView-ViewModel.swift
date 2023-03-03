@@ -31,6 +31,8 @@ extension ProfileView {
     }
     
     class ViewModel: ObservableObject {
+        @Published var shouldUpdate: Bool = false
+        @Published var shouldShowErrorAlert: Bool = false
         
         @Published var profile: UserPresentationModel = .init()
         
@@ -58,79 +60,46 @@ extension ProfileView {
             }
         }
         
-        func onError(error: String){
+        func changePic(id: Int, image: String) {
+            let url = "http://127.0.0.1:8000/api/user/update"
             
+            let dictionary: [String: Any] = [
+                "id" : id,
+                "image" : image
+            ]
+            
+            NetworkHelper.shared.requestProvider(url: url, type: .POST, params: dictionary) { data, response, error in
+                if let error = error {
+                    self.onError(error: error.localizedDescription)
+                } else if let data = data, let response = response as? HTTPURLResponse {
+                    if response.statusCode == 200 {
+                        do {
+                            if try JSONSerialization.jsonObject(with: data, options: []) is [String: Any]
+                            {
+                                // Save the session token to UserDefaults
+                                // Show the home screen
+                                self.onSuccess()
+                            } else {
+                                self.onError(error: "Invalid server response")
+                            }
+                        } catch {
+                            self.onError(error: error.localizedDescription)
+                        }
+                    } else {
+                        self.onError(error: error?.localizedDescription ?? "Request Error")
+                    }
+                }
+            }
+        }
+        
+        func onSuccess() {
+            DispatchQueue.main.async {
+                self.shouldUpdate = true
+                }
+        }
+        
+        func onError(error: String) {
+            shouldShowErrorAlert = true
         }
     }
-    
-    //    class ViewModel: ObservableObject {
-    //        @Published var userData: UserData?
-    //        var userId: Int
-    //
-    //        init() {
-    //               self.userId = UserDefaults.standard.integer(forKey: "UserId")
-    //           }
-    //
-    //        func getUserData() {
-    //            let url = URL(string: "https://example.com/api/users/\(userId)")! // replace with your API endpoint
-    //            var request = URLRequest(url: url)
-    //
-    //            request.httpMethod = "GET"
-    //
-    //            URLSession.shared.dataTask(with: request) { data, response, error in
-    //                if let error = error {
-    //                    print(error)
-    //                }
-    //
-    //                guard let data = data else {
-    //                    print("No data received")
-    //                    return
-    //                }
-    //
-    //                if let userData = try? JSONDecoder().decode(UserData.self, from: data) {
-    //                    DispatchQueue.main.async {
-    //                        self.userData = userData
-    //                    }
-    //                } else {
-    //                    print("Error decoding user data")
-    //                }
-    //            }.resume()
-    //        }
-    //
-    //
-    //        func getEvents(){
-    //
-    //            NetworkHelper.shared.requestProvider(url: "https://example.com/api/users/\(userId)", type: .GET) { data, response, error in
-    //                if let error = error {
-    //                    print(error.localizedDescription)
-    //
-    //                }else if let data = data, let response = response as? HTTPURLResponse{
-    //                    print(response.statusCode)
-    //                    print(String(bytes:data, encoding: .utf8))
-    //                    if response.statusCode == 200{
-    //                        onSucces(data: data)
-    //
-    //                    }else{
-    //                        onError(error: error?.localizedDescription ?? "Request error")
-    //
-    //                    }
-    //                }
-    //            }
-    //        }
-    //
-    //        func onSucces(data: Data){
-    //            do{
-    //                let eventsNotFiltered = try JSONDecoder().decode([EventResponseModel?].self, from: data)
-    //                events = eventsNotFiltered.compactMap({ eventNotFiltered in
-    //                    guard let date = eventNotFiltered?.date else { return nil }
-    //                    return UserPresentationModel(name: eventNotFiltered?.name ?? "", date: date)
-    //                })
-    //            }catch{
-    //                self.onError(error: error.localizedDescription)
-    //            }
-    //        }
-    //        func onError(error: String){
-    //
-    //        }
-    //    }
 }
