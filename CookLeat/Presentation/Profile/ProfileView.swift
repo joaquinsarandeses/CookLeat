@@ -11,16 +11,18 @@ struct ProfileView: View {
     @ObservedObject var viewModel = ViewModel()
    // @State var user: [viewModel.UserPresentationModel] = []
     @State var image: UIImage?
-    
-    
+    @State private var showImagePicker = false
+    @State private var showSettings = false
+    @State var base64Image: String?
     
     var body: some View {
         ZStack{
+            
             VStack{
                 navBar
                 Spacer()
                 Spacer()
-                
+               
                 HStack{
                     if let data = Data(base64Encoded: viewModel.profile.image) {
                                 if let image = UIImage(data: data) {
@@ -116,12 +118,75 @@ struct ProfileView: View {
                 .padding(10)
                 
             }
+            if showSettings {
+                            Color.gray
+                                .opacity(0.5)
+                                .edgesIgnoringSafeArea(.all)
+                                .overlay(
+                                    VStack {
+                                        Text("Escoge que hacer")
+                                        HStack{
+                                            Button(action: {
+                                                self.showImagePicker = true
+                                                
+                                            }) { if let image = image {
+                                                Image(uiImage: image)
+                                                    .resizable()
+                                                    .frame(width: 90, height: 50)
+                                                    .sheet(isPresented: $showImagePicker) {
+                                                                ImagePicker(image:$image, sourceType: .photoLibrary)
+                                                            }
+                                            } else {
+                                                Text("Cambiar imagen")
+                                                    .foregroundColor(.white)
+                                                    .frame(width: 90, height: 50)
+                                                    .sheet(isPresented: $showImagePicker) {
+                                                                ImagePicker(image: $image, sourceType: .photoLibrary)
+                                                            }
+                                            }
+                                                
+                                            }
+                                            .padding()
+                                            .background(Color.blue)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(10)
+                                            .frame(height: 100)
+                                            Button("Guardar") {
+                                                if let image = image {
+                                                    self.image = image
+                                                    self.base64Image = convertImageToBase64(image: image)
+                                                    viewModel.changePic(id: UserDefaults.standard.integer(forKey: "user_id") , image: base64Image ?? "")
+                                                    showSettings = false
+                                                }
+                                            }
+                                            .padding()
+                                            .background(Color.blue)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(10)
+                                            .frame(height: 100)
+                                            Button("Cerrar") {
+                                                showImagePicker = false
+                                            }
+                                            .padding()
+                                            .background(Color.blue)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(10)
+                                            .frame(height: 100)
+                                        }
+                                    }
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 10)
+                                )
+                        }
         }
         .onAppear {
             viewModel.getProfileData()
             
             
                 }
+       
     }
     
     private  var navBar: some View {
@@ -141,6 +206,7 @@ struct ProfileView: View {
                     Spacer()
                     
                     Button(action: {
+                        showSettings = true
                     }) {
                         Image(systemName: "gearshape.fill")
                             .resizable()
@@ -157,10 +223,57 @@ struct ProfileView: View {
             
         }
      }
+    
+    
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
     }
+}
+
+
+struct ProfilePicker: UIViewControllerRepresentable {
+    @Binding var image: UIImage?
+    @Environment(\.presentationMode) var presentationMode
+    var sourceType: UIImagePickerController.SourceType
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ProfilePicker>) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.sourceType = sourceType
+        picker.delegate = context.coordinator
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ProfilePicker>) {
+    }
+
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
+
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        let parent: ProfilePicker
+
+        init(_ parent: ProfilePicker) {
+            self.parent = parent
+        }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+            if let image = info[.originalImage] as? UIImage {
+                parent.image = image
+            }
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+    }
+}
+
+func ImageToBase64(image: UIImage) -> String? {
+    guard let imageData = image.jpegData(compressionQuality: 0.5) else { return nil }
+    return imageData.base64EncodedString()
 }
