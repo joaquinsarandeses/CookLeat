@@ -48,12 +48,12 @@ extension HomeView{
                     
                 }else if let data = data, let response = response as? HTTPURLResponse{
                     print(response.statusCode)
-                    print(String(bytes:data, encoding: .utf8))
+                    //print(String(bytes:data, encoding: .utf8))
                     if response.statusCode == 200{
                         do {
                             let recipeDataModel = try  JSONDecoder().decode(RecipeRecentDataModel.self, from: data)
                             // access the user properties as needed
-                            print(recipeDataModel)
+                            //print(recipeDataModel)
                             
                             self.recents = recipeDataModel.recent.compactMap({ recipe in
                                 return RecentPresentationModel(dataModel: recipe)
