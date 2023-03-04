@@ -15,6 +15,15 @@ struct ProfileView: View {
     @State private var showSettings = false
     @State var base64Image: String?
     
+    struct myEvents: Identifiable {
+        let id = UUID()
+        let image: Image
+        let title: String
+        let subtitle: String
+        let examp: Image
+        let cat: String
+    }
+    
     var body: some View {
         ZStack{
             
@@ -81,23 +90,23 @@ struct ProfileView: View {
                 Spacer()
                 
                 ScrollView(.vertical){
-                    
+                    //MARK: Posts
                     LazyVStack {
-                        ForEach(data, id: \.id) { cell in
+                        ForEach(viewModel.myEvents, id: \.id) { event in
                             HStack {
-                                cell.image
+                                Image("logo")
                                     .resizable()
                                     .frame(width: 90, height: 90)
                                 
                                 VStack() {
-                                    Text(cell.title)
+                                    Text(event.name)
                                         .font(.title)
                                         .fontWeight(.bold)
                                         .foregroundColor(Color("TextY"))
                                         .lineLimit(1)
-                                    Text(cell.subtitle)
+                                    Text(event.description)
                                         .font(.subheadline)
-                                    Text(cell.cat)
+                                    Text(event.category)
                                         .foregroundColor(Color.white)
                                         .frame(width: 60, height: 20)
                                         .background(.gray)
@@ -105,7 +114,7 @@ struct ProfileView: View {
                                     
                                 }
                                 Spacer()
-                                cell.examp
+                                Image("logo")
                                     .resizable()
                                     .frame(width: 90, height: 90)
                             }
@@ -165,7 +174,7 @@ struct ProfileView: View {
                                             .cornerRadius(10)
                                             .frame(height: 100)
                                             Button("Cerrar") {
-                                                showImagePicker = false
+                                                showSettings = false
                                             }
                                             .padding()
                                             .background(Color.blue)
@@ -183,7 +192,7 @@ struct ProfileView: View {
         }
         .onAppear {
             viewModel.getProfileData()
-            
+            viewModel.getMyEvents()
             
                 }
        

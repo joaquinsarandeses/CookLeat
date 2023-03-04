@@ -20,3 +20,16 @@ struct RecipeDataModel: Decodable {
 struct RecipeRecentDataModel: Decodable {
     var recent: [RecipeDataModel?]
 }
+struct UsersRecipeDataModel: Decodable {
+    var id: Int?
+    var name:String?
+    var image: String?
+    var description: String?
+    var user: String?
+    var userPic: String?
+    var category: String?
+}
+struct MyRecipeDataModel: Decodable {
+    var userRecipes: [UsersRecipeDataModel?]
+    //La variable debe tener el nombre del array
+}
