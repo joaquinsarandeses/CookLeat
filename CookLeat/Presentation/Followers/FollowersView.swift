@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FollowersView: View {
-    @State var search: String = ""
+    @ObservedObject var viewModel = ViewModel()
     
     var body: some View {
         NavigationView {
@@ -16,39 +16,27 @@ struct FollowersView: View {
             ZStack {
                 VStack(spacing: 20) {
                     navBar
+                        .padding(.top,-20)
                     
-                    TextField("Buscar...", text: $search)
-                        .customDesign()
-                        .shadow(radius: 2)
                     //MARK: aquí tenemos la tabla donde aparece todo lo que busquemos
                     ScrollView(.vertical){
                         
                         LazyVStack {
-                            ForEach(data, id: \.id) { cell in
+                            ForEach(viewModel.followers, id: \.id) { cell in
                                 HStack {
-                                    cell.image
+                                    Image("Example")
                                         .resizable()
                                         .frame(width: 90, height: 90)
                                     
                                     VStack() {
-                                        Text(cell.title)
+                                        Text(cell.name)
                                             .font(.title)
                                             .fontWeight(.bold)
                                             .foregroundColor(Color("TextY"))
                                             .lineLimit(1)
-                                        Text(cell.subtitle)
-                                            .font(.subheadline)
-                                        Text(cell.cat)
-                                            .foregroundColor(Color.white)
-                                            .frame(width: 60, height: 20)
-                                            .background(.gray)
-                                            .cornerRadius(10)
                                         
                                     }
                                     Spacer()
-                                    cell.examp
-                                        .resizable()
-                                        .frame(width: 90, height: 90)
                                 }
                                 .background(.white)
                                 .cornerRadius(15)
@@ -58,6 +46,9 @@ struct FollowersView: View {
                     }
                     .padding(10)
                 }
+            }
+            .onAppear(){
+                viewModel.getFollowers()
             }
         }
 
@@ -72,7 +63,7 @@ struct FollowersView: View {
              HStack()  {
                  Image(systemName: "arrowshape.left.fill")
                      .resizable()
-                     .foregroundColor(Color.white)
+                     .foregroundColor(Color("BackB"))
                      .frame(width: 60, height: 45)
                      .padding(.leading, 10)
                  Spacer()

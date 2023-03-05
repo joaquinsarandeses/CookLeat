@@ -25,170 +25,176 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        ZStack{
-            
-            VStack{
-                navBar
-                Spacer()
-                Spacer()
-               
-                HStack{
-                    if let data = Data(base64Encoded: viewModel.profile.image) {
-                                if let image = UIImage(data: data) {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .frame(width: 90, height: 90)
-                                        .clipShape(Circle())
-                                        .padding(.trailing,20)
-                                        
-                                } else {
-                                    Image("ProfilePic")
-                                        .foregroundColor(.red)
-                                        .frame(width: 60, height: 60)
-                                        .padding(.trailing,20)
-                                }
+        NavigationView{
+            ZStack{
+                
+                VStack{
+                    navBar
+                    Spacer()
+                    Spacer()
+                    
+                    HStack{
+                        if let data = Data(base64Encoded: viewModel.profile.image) {
+                            if let image = UIImage(data: data) {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .frame(width: 90, height: 90)
+                                    .clipShape(Circle())
+                                    .padding(.trailing,20)
+                                
                             } else {
                                 Image("ProfilePic")
                                     .foregroundColor(.red)
                                     .frame(width: 60, height: 60)
                                     .padding(.trailing,20)
                             }
-                    VStack{
-                        Text(viewModel.profile.name)
-                            .font(.system(size: 30))
-                            .fontWeight(.bold)
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(1)
-                            .padding(.trailing,70)
-                            .foregroundColor(Color("BackBut"))
-                            .padding(.bottom,5)
-                        
-                        HStack{
+                        } else {
+                            Image("ProfilePic")
+                                .foregroundColor(.red)
+                                .frame(width: 60, height: 60)
+                                .padding(.trailing,20)
+                        }
+                        VStack{
+                            Text(viewModel.profile.name)
+                                .font(.system(size: 30))
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(1)
+                                .padding(.trailing,70)
+                                .foregroundColor(Color("BackBut"))
+                                .padding(.bottom,5)
                             
-                            VStack{
-                                Text("\(viewModel.profile.follows)")
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 30))
-                                Text("Seguidores")
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color("BackBut"))
-                            }
-                            .padding(.trailing,40)
-                            VStack{
-                                Text("\(viewModel.profile.followers)")
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 30))
-                                Text("Seguidos")
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color("BackBut"))
-                            }
-                            .padding(.trailing,20)
-                        }
-                    }
-
-                }
-                Spacer()
-                
-                ScrollView(.vertical){
-                    //MARK: Posts
-                    LazyVStack {
-                        ForEach(viewModel.myEvents, id: \.id) { event in
-                            HStack {
-                                Image("logo")
-                                    .resizable()
-                                    .frame(width: 90, height: 90)
-                                
-                                VStack() {
-                                    Text(event.name)
-                                        .font(.title)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(Color("TextY"))
-                                        .lineLimit(1)
-                                    Text(event.description)
-                                        .font(.subheadline)
-                                    Text(event.category)
-                                        .foregroundColor(Color.white)
-                                        .frame(width: 60, height: 20)
-                                        .background(.gray)
-                                        .cornerRadius(10)
-                                    
+                            HStack{
+                                NavigationLink(destination: FollowersView()) {
+                                    VStack{
+                                        Text("\(viewModel.profile.follows)")
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 30))
+                                        Text("Seguidores")
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color("BackBut"))
+                                        
+                                    }
                                 }
-                                Spacer()
-                                Image("logo")
-                                    .resizable()
-                                    .frame(width: 90, height: 90)
+                                .padding(.trailing,40)
+                                NavigationLink(destination: FollowedView()) {
+                                    VStack{
+                                        Text("\(viewModel.profile.followers)")
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 30))
+                                        Text("Seguidos")
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color("BackBut"))
+                                    }
+                                }
+                                .padding(.trailing,20)
                             }
-                            .background(.white)
-                            .cornerRadius(15)
                         }
+                        
                     }
-                    .shadow(radius: 2)
+                    Spacer()
+                    
+                    ScrollView(.vertical){
+                        //MARK: Posts
+                        LazyVStack {
+                            ForEach(viewModel.myEvents, id: \.id) { event in
+                                HStack {
+                                    Image("logo")
+                                        .resizable()
+                                        .frame(width: 90, height: 90)
+                                    
+                                    VStack() {
+                                        Text(event.name)
+                                            .font(.title)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color("TextY"))
+                                            .lineLimit(1)
+                                        Text(event.description)
+                                            .font(.subheadline)
+                                        Text(event.category)
+                                            .foregroundColor(Color.white)
+                                            .frame(width: 60, height: 20)
+                                            .background(.gray)
+                                            .cornerRadius(10)
+                                        
+                                    }
+                                    Spacer()
+                                    Image("logo")
+                                        .resizable()
+                                        .frame(width: 90, height: 90)
+                                }
+                                .background(.white)
+                                .cornerRadius(15)
+                            }
+                        }
+                        .shadow(radius: 2)
+                    }
+                    .padding(10)
+                    
                 }
-                .padding(10)
-                
-            }
-            if showSettings {
-                            Color.gray
-                                .opacity(0.5)
-                                .edgesIgnoringSafeArea(.all)
-                                .overlay(
-                                    VStack {
-                                        Text("Escoge que hacer")
-                                        HStack{
-                                            Button(action: {
-                                                self.showImagePicker = true
-                                                
-                                            }) { if let image = image {
-                                                Image(uiImage: image)
-                                                    .resizable()
-                                                    .frame(width: 90, height: 50)
-                                                    .sheet(isPresented: $showImagePicker) {
-                                                                ImagePicker(image:$image, sourceType: .photoLibrary)
-                                                            }
-                                            } else {
-                                                Text("Cambiar imagen")
-                                                    .foregroundColor(.white)
-                                                    .frame(width: 90, height: 50)
-                                                    .sheet(isPresented: $showImagePicker) {
-                                                                ImagePicker(image: $image, sourceType: .photoLibrary)
-                                                            }
+                if showSettings {
+                    Color.gray
+                        .opacity(0.5)
+                        .edgesIgnoringSafeArea(.all)
+                        .overlay(
+                            VStack {
+                                Text("Escoge que hacer")
+                                HStack{
+                                    Button(action: {
+                                        self.showImagePicker = true
+                                        
+                                    }) { if let image = image {
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .frame(width: 90, height: 50)
+                                            .sheet(isPresented: $showImagePicker) {
+                                                ImagePicker(image:$image, sourceType: .photoLibrary)
                                             }
-                                                
-                                            }
-                                            .padding()
-                                            .background(Color.blue)
+                                    } else {
+                                        Text("Cambiar imagen")
                                             .foregroundColor(.white)
-                                            .cornerRadius(10)
-                                            .frame(height: 100)
-                                            Button("Guardar") {
-                                                if let image = image {
-                                                    self.image = image
-                                                    self.base64Image = convertImageToBase64(image: image)
-                                                    viewModel.changePic(id: UserDefaults.standard.integer(forKey: "user_id") , image: base64Image ?? "")
-                                                    showSettings = false
-                                                }
+                                            .frame(width: 90, height: 50)
+                                            .sheet(isPresented: $showImagePicker) {
+                                                ImagePicker(image: $image, sourceType: .photoLibrary)
                                             }
-                                            .padding()
-                                            .background(Color.blue)
-                                            .foregroundColor(.white)
-                                            .cornerRadius(10)
-                                            .frame(height: 100)
-                                            Button("Cerrar") {
-                                                showSettings = false
-                                            }
-                                            .padding()
-                                            .background(Color.blue)
-                                            .foregroundColor(.white)
-                                            .cornerRadius(10)
-                                            .frame(height: 100)
+                                    }
+                                        
+                                    }
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                                    .frame(height: 100)
+                                    Button("Guardar") {
+                                        if let image = image {
+                                            self.image = image
+                                            self.base64Image = convertImageToBase64(image: image)
+                                            viewModel.changePic(id: UserDefaults.standard.integer(forKey: "user_id") , image: base64Image ?? "")
+                                            showSettings = false
                                         }
                                     }
                                     .padding()
-                                    .background(Color.white)
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
                                     .cornerRadius(10)
-                                    .shadow(radius: 10)
-                                )
-                        }
+                                    .frame(height: 100)
+                                    Button("Cerrar") {
+                                        showSettings = false
+                                    }
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                                    .frame(height: 100)
+                                }
+                            }
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .shadow(radius: 10)
+                        )
+                }
+            }
         }
         .onAppear {
             viewModel.getProfileData()
