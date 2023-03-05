@@ -33,6 +33,10 @@
 		2D577A2B299E933500AB1A6E /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A2A299E933500AB1A6E /* PostView.swift */; };
 		2D7A9F1629AF726C00B4C943 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A9F1529AF726C00B4C943 /* Components.swift */; };
 		2D7F0610299AC2E500F90B55 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F060F299AC2E500F90B55 /* RegisterView.swift */; };
+		2D9D9F4929B51742000D14D4 /* FollowedView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9D9F4829B51742000D14D4 /* FollowedView-ViewModel.swift */; };
+		2D9D9F4B29B51778000D14D4 /* FollowersView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9D9F4A29B51778000D14D4 /* FollowersView-ViewModel.swift */; };
+		2D9D9F4D29B517A0000D14D4 /* FollowedDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9D9F4C29B517A0000D14D4 /* FollowedDataModel.swift */; };
+		2D9D9F4F29B517AD000D14D4 /* FolowersDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9D9F4E29B517AD000D14D4 /* FolowersDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +68,10 @@
 		2D577A2A299E933500AB1A6E /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		2D7A9F1529AF726C00B4C943 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		2D7F060F299AC2E500F90B55 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		2D9D9F4829B51742000D14D4 /* FollowedView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FollowedView-ViewModel.swift"; sourceTree = "<group>"; };
+		2D9D9F4A29B51778000D14D4 /* FollowersView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FollowersView-ViewModel.swift"; sourceTree = "<group>"; };
+		2D9D9F4C29B517A0000D14D4 /* FollowedDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowedDataModel.swift; sourceTree = "<group>"; };
+		2D9D9F4E29B517AD000D14D4 /* FolowersDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolowersDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				2D577A26299E914500AB1A6E /* FollowedView.swift */,
+				2D9D9F4829B51742000D14D4 /* FollowedView-ViewModel.swift */,
 			);
 			path = Followed;
 			sourceTree = "<group>";
@@ -158,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				2D577A28299E916300AB1A6E /* FollowersView.swift */,
+				2D9D9F4A29B51778000D14D4 /* FollowersView-ViewModel.swift */,
 			);
 			path = Followers;
 			sourceTree = "<group>";
@@ -175,6 +185,8 @@
 			children = (
 				2D3F4AD829B12942006CF418 /* UserDataModel.swift */,
 				2D3F4AE529B26502006CF418 /* RecipeDataModel.swift */,
+				2D9D9F4C29B517A0000D14D4 /* FollowedDataModel.swift */,
+				2D9D9F4E29B517AD000D14D4 /* FolowersDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -336,9 +348,12 @@
 				2D577A15299E7B7E00AB1A6E /* SplashView.swift in Sources */,
 				2D7A9F1629AF726C00B4C943 /* Components.swift in Sources */,
 				2D577A1C299E7F2400AB1A6E /* SearchView.swift in Sources */,
+				2D9D9F4D29B517A0000D14D4 /* FollowedDataModel.swift in Sources */,
 				2D3F4AE629B26502006CF418 /* RecipeDataModel.swift in Sources */,
 				2D577A25299E864900AB1A6E /* CustomTab.swift in Sources */,
+				2D9D9F4F29B517AD000D14D4 /* FolowersDataModel.swift in Sources */,
 				2D42E6A129AD69C0000B1879 /* NetworkHelper.swift in Sources */,
+				2D9D9F4929B51742000D14D4 /* FollowedView-ViewModel.swift in Sources */,
 				2D577A23299E855500AB1A6E /* Profile2View.swift in Sources */,
 				2D577A1A299E7E3500AB1A6E /* HomeView.swift in Sources */,
 				2D577A27299E914500AB1A6E /* FollowedView.swift in Sources */,
@@ -349,6 +364,7 @@
 				2D3F4AD529B0079C006CF418 /* UserData.swift in Sources */,
 				2D3F4AD929B12942006CF418 /* UserDataModel.swift in Sources */,
 				2D3F4AD229B0027A006CF418 /* AddPostView-ViewModel.swift in Sources */,
+				2D9D9F4B29B51778000D14D4 /* FollowersView-ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,16 +26,6 @@ let data: [Cell] = [
     Cell(image: Image("logo"), title: "Title 7", subtitle: "Subtitle 7",examp: Image("Example"),cat: "Postre")
 ]
 
-struct Recent: Identifiable {
-    let id = UUID()
-    let image: Image
-    let title: String
-    let subtitle: String
-    let examp: Image
-    let cat: String
-}
-
-
 struct HomeView: View {
     @ObservedObject var viewModel = ViewModel()
     @Binding var selectedTab: TabViewList

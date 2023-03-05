@@ -134,12 +134,12 @@ extension ProfileView {
                     
                 }else if let data = data, let response = response as? HTTPURLResponse{
                     print(response.statusCode)
-                    print(String(bytes:data, encoding: .utf8))
+                    //print(String(bytes:data, encoding: .utf8))
                     if response.statusCode == 200{
                         do {
                             let myRecipeDataModel = try  JSONDecoder().decode(MyRecipeDataModel.self, from: data)
                             // access the user properties as needed
-                            print("La receta se muestra \(myRecipeDataModel)")
+                            //print("La receta se muestra \(myRecipeDataModel)")
                             
                             self.myEvents = myRecipeDataModel.userRecipes.compactMap({ recipe in
                                 return MyEventsPresentationModel(dataModel: recipe)
