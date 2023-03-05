@@ -34,6 +34,8 @@ struct Recent: Identifiable {
     let examp: Image
     let cat: String
 }
+
+
 struct HomeView: View {
     @ObservedObject var viewModel = ViewModel()
     @Binding var selectedTab: TabViewList
@@ -50,9 +52,9 @@ struct HomeView: View {
                         .frame(width: 30, height: 30)
                         .foregroundColor(Color("BackA"))
                         .padding(5)
-//                        .onTapGesture {
-//                            selectedTab = .search
-//                        }
+                    //                        .onTapGesture {
+                    //                            selectedTab = .search
+                    //                        }
                     // ejemplo navegación tab
                     
                     
@@ -66,7 +68,7 @@ struct HomeView: View {
                     Spacer()
                     
                 }
-
+                
                 ScrollView(.horizontal){
                     LazyHStack {
                         ForEach(viewModel.recents, id: \.id) { recent in
@@ -116,40 +118,40 @@ struct HomeView: View {
                 
                 .padding(.trailing,120)
                 ScrollView(.vertical){
-  
-                        LazyVStack {
-                            ForEach(data, id: \.id) { cell in
-                                HStack{
-                                    cell.image
-                                        .resizable()
-                                        .frame(width: 90, height: 90)
-                                       
-                                    VStack() {
-                                        Text(cell.title)
-                                            .font(.title)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(Color("TextY"))
-                                            .lineLimit(1)
-                                        Text(cell.subtitle)
-                                            .font(.subheadline)
-                                        Text(cell.cat)
-                                            .foregroundColor(Color.white)
-                                            .frame(width: 60, height: 20)
-                                            .background(.gray)
-                                            .cornerRadius(10)
-                                        
-                                    }
-                            
-                               Spacer()
-                                    
-                                    cell.examp
-                                        .resizable()
-                                        .frame(width: 90, height: 90)
-                                }
-                                .background(.white)
-                                .cornerRadius(15)
+                    
+                    LazyVStack {
+                        ForEach(viewModel.liked, id: \.id) { likes in
+                            HStack{
+                                Image("logo")
+                                    .resizable()
+                                    .frame(width: 90, height: 90)
                                 
+                                VStack() {
+                                    Text(likes.name)
+                                        .font(.title)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color("TextY"))
+                                        .lineLimit(1)
+                                    Text(likes.user)
+                                        .font(.subheadline)
+                                    Text(likes.category)
+                                        .foregroundColor(Color.white)
+                                        .frame(width: 60, height: 20)
+                                        .background(.gray)
+                                        .cornerRadius(10)
+                                    
+                                }
+                                
+                                Spacer()
+                                
+                                Image("logo")
+                                    .resizable()
+                                    .frame(width: 90, height: 90)
                             }
+                            .background(.white)
+                            .cornerRadius(15)
+                            
+                        }
                         
                     }
                     .shadow(radius: 2)
@@ -157,32 +159,33 @@ struct HomeView: View {
                 
                 .padding(10)
                 
-               
+                
             }
         }
         .onAppear(){
             viewModel.getRecent()
+            viewModel.getLiked()
         }
     }
     private  var navBar: some View {
-         ZStack {
-             Text("Home")
-                 .font(.title)
-                 .fontWeight(.bold)
-                 .foregroundColor(Color.white)
-             
-             HStack()  {
-                 Image("logo")
-                     .resizable()
-                     .frame(width: 60, height: 45)
-                     .padding(.leading, 10)
-                 Spacer()
-             }
-         }
-         .frame(height: 50)
-         .background(Color("BackB"))
-     }
-
+        ZStack {
+            Text("Home")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(Color.white)
+            
+            HStack()  {
+                Image("logo")
+                    .resizable()
+                    .frame(width: 60, height: 45)
+                    .padding(.leading, 10)
+                Spacer()
+            }
+        }
+        .frame(height: 50)
+        .background(Color("BackB"))
+    }
+    
 }
 
 struct HomeView_Previews: PreviewProvider {
