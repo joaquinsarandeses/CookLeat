@@ -47,3 +47,17 @@ struct LikedRecipeDataModel: Decodable {
     var favorites: [LikedDataModel?]
     //La variable debe tener el nombre del array
 }
+
+struct AllRecipeDataModel: Decodable {
+    var id: Int?
+    var name:String?
+    var image: String?
+    var description: String?
+    var user: String?
+    var userPic: String?
+    var category: String?
+}
+
+struct AllDataModel: Decodable {
+    var list: [AllRecipeDataModel?]
+}

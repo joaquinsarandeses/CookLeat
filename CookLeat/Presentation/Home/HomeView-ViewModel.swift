@@ -7,62 +7,64 @@
 
 import Foundation
 
-extension HomeView{
+//MARK: LikePresentationModel
+struct LikePresentationModel: Identifiable {
+    var id = UUID()
+    var name: String
+    var image: String
+    var description: String
+    var user: String
+    var userPic: String
+    var category: String
     
-    struct RecentPresentationModel: Identifiable {
-        var id = UUID()
-        var name: String
-        var image: String
-        var description: String
-        var user: String
-        var userPic: String
-        var category: String
-        
-        init() {
-            self.name = ""
-            self.image = ""
-            self.description = ""
-            self.user = ""
-            self.userPic = ""
-            self.category = ""
-        }
-        
-        init(dataModel: RecipeDataModel?) {
-            self.name = dataModel?.name ?? ""
-            self.image = dataModel?.image ?? ""
-            self.description = dataModel?.description ?? ""
-            self.user = dataModel?.user ?? ""
-            self.userPic = dataModel?.userPic ?? ""
-            self.category = dataModel?.category ?? "Carne"
-        }
+    init() {
+        self.name = ""
+        self.image = ""
+        self.description = ""
+        self.user = ""
+        self.userPic = ""
+        self.category = ""
     }
-    struct LikePresentationModel: Identifiable {
-        var id = UUID()
-        var name: String
-        var image: String
-        var description: String
-        var user: String
-        var userPic: String
-        var category: String
-        
-        init() {
-            self.name = ""
-            self.image = ""
-            self.description = ""
-            self.user = ""
-            self.userPic = ""
-            self.category = ""
-        }
-        
-        init(dataModel: LikedDataModel?) {
-            self.name = dataModel?.name ?? ""
-            self.image = dataModel?.image ?? ""
-            self.description = dataModel?.description ?? ""
-            self.user = dataModel?.user ?? ""
-            self.userPic = dataModel?.userPic ?? ""
-            self.category = dataModel?.category ?? "Carne"
-        }
+    
+    init(dataModel: LikedDataModel?) {
+        self.name = dataModel?.name ?? ""
+        self.image = dataModel?.image ?? ""
+        self.description = dataModel?.description ?? ""
+        self.user = dataModel?.user ?? ""
+        self.userPic = dataModel?.userPic ?? ""
+        self.category = dataModel?.category ?? "Carne"
     }
+}
+//MARK: RecentPresentationModel
+struct RecentPresentationModel: Identifiable {
+    var id = UUID()
+    var name: String
+    var image: String
+    var description: String
+    var user: String
+    var userPic: String
+    var category: String
+    
+    init() {
+        self.name = ""
+        self.image = ""
+        self.description = ""
+        self.user = ""
+        self.userPic = ""
+        self.category = ""
+    }
+    
+    init(dataModel: RecipeDataModel?) {
+        self.name = dataModel?.name ?? ""
+        self.image = dataModel?.image ?? ""
+        self.description = dataModel?.description ?? ""
+        self.user = dataModel?.user ?? ""
+        self.userPic = dataModel?.userPic ?? ""
+        self.category = dataModel?.category ?? "Carne"
+    }
+}
+
+extension HomeView{
     
     class ViewModel: ObservableObject{
         @Published var recents: [RecentPresentationModel] = []
@@ -107,7 +109,7 @@ extension HomeView{
                     
                 }else if let data = data, let response = response as? HTTPURLResponse{
                     print(response.statusCode)
-                    print(String(bytes:data, encoding: .utf8))
+                    //print(String(bytes:data, encoding: .utf8))
                     if response.statusCode == 200{
                         do {
                             let likedRecipeDataModel = try  JSONDecoder().decode(LikedRecipeDataModel.self, from: data)
