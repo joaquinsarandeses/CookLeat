@@ -119,7 +119,7 @@ struct Profile2View: View {
                 HStack()  {
                     Image(systemName: "arrowshape.left.fill")
                         .resizable()
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color("BackB"))
                         .frame(width: 60, height: 45)
                         .padding(.leading, 10)
                     Spacer()

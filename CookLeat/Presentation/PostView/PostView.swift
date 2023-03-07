@@ -8,33 +8,32 @@
 import SwiftUI
 
 struct PostView: View {
-    @State var postname: String = ""
-    @State var description: String = ""
+    let viewModel: ViewModel
     var body: some View {
         ZStack{
             VStack (spacing: 20){
                 navBar
-                
+                    .padding(.top,-20)
                 HStack{
                     
                     Image("ProfilePic")
                         .padding(.leading)
                     
                     VStack{
-                        Text("Nombre derl usaurio")
+                        Text(viewModel.user)
                             .font(.system(size: 20))
                             .lineLimit(1)
                             .padding(.trailing,70)
                             .foregroundColor(Color("BackBut"))
                         
-                        Text("nombre receta")
+                        Text(viewModel.name)
                             .font(.system(size: 30))
                             .fontWeight(.bold)
                             .lineLimit(1)
                             .padding(.trailing,70)
                             .foregroundColor(Color("BackBut"))
                         
-                        Text("categoría")
+                        Text(viewModel.category)
                             .font(.system(size: 20))
                             .fontWeight(.bold)
                             .lineLimit(1)
@@ -58,7 +57,7 @@ struct PostView: View {
                             .foregroundColor(Color("BackB"))
                             .cornerRadius(5)
                         
-                        Text("Descripción de la receta")
+                        Text(viewModel.description)
                             
                             .multilineTextAlignment(.leading)
                             .scrollDisabled(false)
@@ -93,7 +92,7 @@ struct PostView: View {
             HStack()  {
                 Image(systemName: "arrowshape.left.fill")
                     .resizable()
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color("BackB"))
                     .frame(width: 60, height: 45)
                     .padding(.leading, 10)
                 Spacer()
@@ -106,6 +105,6 @@ struct PostView: View {
 
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
-        PostView()
+        PostView(viewModel: .init())
     }
 }

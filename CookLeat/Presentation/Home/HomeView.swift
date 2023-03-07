@@ -17,13 +17,13 @@ struct Cell: Identifiable {
 }
 
 let data: [Cell] = [
-    Cell(image: Image("logo"), title: "Title 1", subtitle: "Subtitle 1",examp: Image("Example"), cat: "Postre"),
-    Cell(image: Image("logo"), title: "Title 2", subtitle: "Subtitle 2",examp: Image("Example"),cat: "Postre"),
-    Cell(image: Image("logo"), title: "Title 3", subtitle: "Subtitle 3",examp: Image("Example"),cat: "Postre"),
-    Cell(image: Image("logo"), title: "Title 4", subtitle: "Subtitle 4",examp: Image("Example"),cat: "Postre"),
-    Cell(image: Image("logo"), title: "Title 5", subtitle: "Subtitle 5",examp: Image("Example"),cat: "Postre"),
-    Cell(image: Image("logo"), title: "Title 6", subtitle: "Subtitle 6",examp: Image("Example"),cat: "Postre"),
-    Cell(image: Image("logo"), title: "Title 7", subtitle: "Subtitle 7",examp: Image("Example"),cat: "Postre")
+    Cell(image: Image("Food"), title: "Title 1", subtitle: "Subtitle 1",examp: Image("Example"), cat: "Postre"),
+    Cell(image: Image("Food"), title: "Title 2", subtitle: "Subtitle 2",examp: Image("Example"),cat: "Postre"),
+    Cell(image: Image("Food"), title: "Title 3", subtitle: "Subtitle 3",examp: Image("Example"),cat: "Postre"),
+    Cell(image: Image("Food"), title: "Title 4", subtitle: "Subtitle 4",examp: Image("Example"),cat: "Postre"),
+    Cell(image: Image("Food"), title: "Title 5", subtitle: "Subtitle 5",examp: Image("Example"),cat: "Carne"),
+    Cell(image: Image("Food"), title: "Title 6", subtitle: "Subtitle 6",examp: Image("Example"),cat: "Carne"),
+    Cell(image: Image("Food"), title: "Title 7", subtitle: "Subtitle 7",examp: Image("Example"),cat: "Carne")
 ]
 
 struct HomeView: View {
@@ -62,23 +62,11 @@ struct HomeView: View {
                 ScrollView(.horizontal){
                     LazyHStack {
                         ForEach(viewModel.recents, id: \.id) { recent in
-                            VStack(alignment: .leading) {
-                                Image("logo")
-                                    .resizable()
-                                    .frame(width: 150, height: 100)
-                                    .cornerRadius(10)
-                                Text(recent.name)
-                                    .font(.headline)
-                                    .foregroundColor(Color("TextY"))
-                                    .padding(5)
-                                
-                                Text(recent.category)
-                                    .font(.subheadline)
-                                    .padding([.leading, .bottom], 5.0)
+                            NavigationLink(destination: PostView(viewModel: .init(recent: recent))) {
+                                recentItem(recent)
+                                .background()
+                                .cornerRadius(10)
                             }
-                            .background()
-                            .cornerRadius(10)
-                            
                         }
                         .shadow(radius: 3)
                     }
@@ -105,42 +93,14 @@ struct HomeView: View {
                     Spacer()
                     
                 }
-                
                 .padding(.trailing,120)
+                
                 ScrollView(.vertical){
-                    
                     LazyVStack {
-                        ForEach(viewModel.liked, id: \.id) { likes in
-                            HStack{
-                                Image("logo")
-                                    .resizable()
-                                    .frame(width: 90, height: 90)
-                                
-                                VStack() {
-                                    Text(likes.name)
-                                        .font(.title)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(Color("TextY"))
-                                        .lineLimit(1)
-                                    Text(likes.user)
-                                        .font(.subheadline)
-                                    Text(likes.category)
-                                        .foregroundColor(Color.white)
-                                        .frame(width: 60, height: 20)
-                                        .background(.gray)
-                                        .cornerRadius(10)
-                                    
-                                }
-                                
-                                Spacer()
-                                
-                                Image("logo")
-                                    .resizable()
-                                    .frame(width: 90, height: 90)
+                        ForEach(viewModel.liked, id: \.id) { like in
+                            NavigationLink(destination: PostView(viewModel: .init(like: like))) {
+                                item(like)
                             }
-                            .background(.white)
-                            .cornerRadius(15)
-                            
                         }
                         
                     }
@@ -174,6 +134,60 @@ struct HomeView: View {
         }
         .frame(height: 50)
         .background(Color("BackB"))
+    }
+    
+    
+    private func recentItem (_ recent: RecentPresentationModel) -> some View{
+        VStack(alignment: .leading) {
+            Image("Food")
+                .resizable()
+                .frame(width: 150, height: 100)
+                .cornerRadius(10)
+            Text(recent.name)
+                .font(.headline)
+                .foregroundColor(Color("TextY"))
+                .padding(5)
+                .foregroundColor(Color.black)
+            
+            Text(recent.category)
+                .font(.subheadline)
+                .padding([.leading, .bottom], 5.0)
+                .foregroundColor(Color.black)
+        }
+    }
+    
+    private func item(_ likes: LikePresentationModel) -> some View {
+        HStack {
+            Image("Food")
+                .resizable()
+                .frame(width: 90, height: 90)
+            
+            VStack  {
+                Text(likes.name)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("TextY"))
+                    .lineLimit(1)
+                Text(likes.user)
+                    .font(.subheadline)
+                    .foregroundColor(Color.black)
+                Text(likes.category)
+                    .foregroundColor(Color.white)
+                    .frame(width: 65, height: 25)
+                    .background(.gray)
+                    .cornerRadius(10)
+                    .foregroundColor(Color.black)
+                
+            }
+            
+            Spacer()
+            
+            Image("Example")
+                .resizable()
+                .frame(width: 90, height: 90)
+        }
+        .background(.white)
+        .cornerRadius(15)
     }
     
 }

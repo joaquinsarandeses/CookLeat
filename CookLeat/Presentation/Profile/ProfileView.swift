@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var viewModel = ViewModel()
-   // @State var user: [viewModel.UserPresentationModel] = []
+    // @State var user: [viewModel.UserPresentationModel] = []
     @State var image: UIImage?
     @State private var showImagePicker = false
     @State private var showSettings = false
     @State var base64Image: String?
+    @State var shouldShowLogin = false
     
     struct myEvents: Identifiable {
         let id = UUID()
@@ -76,6 +77,7 @@ struct ProfileView: View {
                                         
                                     }
                                 }
+                                .foregroundColor(Color.black)
                                 .padding(.trailing,40)
                                 NavigationLink(destination: FollowedView()) {
                                     VStack{
@@ -87,6 +89,7 @@ struct ProfileView: View {
                                             .foregroundColor(Color("BackBut"))
                                     }
                                 }
+                                .foregroundColor(Color.black)
                                 .padding(.trailing,20)
                             }
                         }
@@ -98,33 +101,11 @@ struct ProfileView: View {
                         //MARK: Posts
                         LazyVStack {
                             ForEach(viewModel.myEvents, id: \.id) { event in
-                                HStack {
-                                    Image("logo")
-                                        .resizable()
-                                        .frame(width: 90, height: 90)
-                                    
-                                    VStack() {
-                                        Text(event.name)
-                                            .font(.title)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(Color("TextY"))
-                                            .lineLimit(1)
-                                        Text(event.description)
-                                            .font(.subheadline)
-                                        Text(event.category)
-                                            .foregroundColor(Color.white)
-                                            .frame(width: 60, height: 20)
-                                            .background(.gray)
-                                            .cornerRadius(10)
-                                        
-                                    }
-                                    Spacer()
-                                    Image("logo")
-                                        .resizable()
-                                        .frame(width: 90, height: 90)
+                                NavigationLink(destination: PostView(viewModel: .init(event: event))) {
+                                    userItem(event)
+                                    .background(.white)
+                                    .cornerRadius(15)
                                 }
-                                .background(.white)
-                                .cornerRadius(15)
                             }
                         }
                         .shadow(radius: 2)
@@ -132,6 +113,7 @@ struct ProfileView: View {
                     .padding(10)
                     
                 }
+                //MARK: Botón de ajustes
                 if showSettings {
                     Color.gray
                         .opacity(0.5)
@@ -140,58 +122,75 @@ struct ProfileView: View {
                             VStack {
                                 Text("Escoge que hacer")
                                 HStack{
-                                    Button(action: {
-                                        self.showImagePicker = true
-                                        
-                                    }) { if let image = image {
-                                        Image(uiImage: image)
-                                            .resizable()
-                                            .frame(width: 90, height: 50)
-                                            .sheet(isPresented: $showImagePicker) {
-                                                ImagePicker(image:$image, sourceType: .photoLibrary)
+                                    VStack{
+                                        Button(action: {
+                                            self.showImagePicker = true
+                                            
+                                        }) { if let image = image {
+                                            Image(uiImage: image)
+                                                .resizable()
+                                                .frame(width: 90, height: 50)
+                                                .sheet(isPresented: $showImagePicker) {
+                                                    ImagePicker(image:$image, sourceType: .photoLibrary)
+                                                }
+                                        } else {
+                                            Text("Cambiar imagen")
+                                                .foregroundColor(.white)
+                                                .sheet(isPresented: $showImagePicker) {
+                                                    ImagePicker(image: $image, sourceType: .photoLibrary)
+                                                }
+                                        }
+                                            
+                                        }
+                                        .padding()
+                                        .background(Color.blue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(10)
+                                        .frame(height: 100)
+                                        Button("Guardar") {
+                                            if let image = image {
+                                                self.image = image
+                                                self.base64Image = convertImageToBase64(image: image)
+                                                viewModel.changePic(id: UserDefaults.standard.integer(forKey: "user_id") , image: base64Image ?? "")
+                                                showSettings = false
                                             }
-                                    } else {
-                                        Text("Cambiar imagen")
-                                            .foregroundColor(.white)
-                                            .frame(width: 90, height: 50)
-                                            .sheet(isPresented: $showImagePicker) {
-                                                ImagePicker(image: $image, sourceType: .photoLibrary)
-                                            }
+                                        }
+                                        .padding()
+                                        .background(Color.blue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(10)
+                                        .frame(width: 150, height: 50)
                                     }
-                                        
-                                    }
-                                    .padding()
-                                    .background(Color.blue)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                                    .frame(height: 100)
-                                    Button("Guardar") {
-                                        if let image = image {
-                                            self.image = image
-                                            self.base64Image = convertImageToBase64(image: image)
-                                            viewModel.changePic(id: UserDefaults.standard.integer(forKey: "user_id") , image: base64Image ?? "")
+                                    VStack{
+                                        Button("Cerrar") {
                                             showSettings = false
                                         }
+                                        .padding()
+                                        .background(Color.blue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(10)
+                                        .frame(height: 100)
+                                        
+                                        Button("Cerrar Sesión") {
+                                            shouldShowLogin = true
+                                            showSettings = false
+                                        }
+                                        .padding()
+                                        .background(Color.blue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(10)
+                                        .frame(height: 100)
+                                        .frame(width: 100)
+                                        
                                     }
-                                    .padding()
-                                    .background(Color.blue)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                                    .frame(height: 100)
-                                    Button("Cerrar") {
-                                        showSettings = false
-                                    }
-                                    .padding()
-                                    .background(Color.blue)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                                    .frame(height: 100)
+                                    
                                 }
                             }
                                 .padding()
                                 .background(Color.white)
                                 .cornerRadius(10)
                                 .shadow(radius: 10)
+                            
                         )
                 }
             }
@@ -200,10 +199,10 @@ struct ProfileView: View {
             viewModel.getProfileData()
             viewModel.getMyEvents()
             
-                }
-       
+        }
+        
     }
-    
+    //MARK: Navbar
     private  var navBar: some View {
         //MARK: TopBar
         VStack{
@@ -237,9 +236,38 @@ struct ProfileView: View {
             
             
         }
-     }
+    }
     
     
+}
+
+private func userItem (_ event: MyEventsPresentationModel) -> some View{
+    HStack {
+        Image("Food")
+            .resizable()
+            .frame(width: 90, height: 90)
+        
+        VStack() {
+            Text(event.name)
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(Color("TextY"))
+                .lineLimit(1)
+            Text(event.description)
+                .font(.subheadline)
+                .foregroundColor(Color.black)
+            Text(event.category)
+                .foregroundColor(Color.white)
+                .frame(width: 60, height: 20)
+                .background(.gray)
+                .cornerRadius(10)
+            
+        }
+        Spacer()
+        Image("logo")
+            .resizable()
+            .frame(width: 90, height: 90)
+    }
 }
 
 struct ProfileView_Previews: PreviewProvider {
@@ -248,46 +276,47 @@ struct ProfileView_Previews: PreviewProvider {
     }
 }
 
-
+//MARK: profilePicker(foto)
 struct ProfilePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
     @Environment(\.presentationMode) var presentationMode
     var sourceType: UIImagePickerController.SourceType
-
+    
     func makeUIViewController(context: UIViewControllerRepresentableContext<ProfilePicker>) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.sourceType = sourceType
         picker.delegate = context.coordinator
         return picker
     }
-
+    
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ProfilePicker>) {
     }
-
+    
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
     }
-
+    
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         let parent: ProfilePicker
-
+        
         init(_ parent: ProfilePicker) {
             self.parent = parent
         }
-
+        
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let image = info[.originalImage] as? UIImage {
                 parent.image = image
             }
             parent.presentationMode.wrappedValue.dismiss()
         }
-
+        
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
 }
 
+//MARK: Image -> Base64
 func ImageToBase64(image: UIImage) -> String? {
     guard let imageData = image.jpegData(compressionQuality: 0.5) else { return nil }
     return imageData.base64EncodedString()

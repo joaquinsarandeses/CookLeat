@@ -9,9 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel: ViewModel = ViewModel()
+    @Environment(\.presentationMode) var presentationMode
     
     @State var name: String = ""
     @State var password: String = ""
+    @State private var alert = false
+    @State private var alertMessage = ""
     
     var body: some View {
         NavigationView { // wrap the VStack in a NavigationView
@@ -39,7 +42,7 @@ struct ContentView: View {
                     }
                         
                     Button{
-                        viewModel.login(name: name, password: password)
+                        checkFields()
                         // set shouldShowHome to true when the button is pressed
                     } label: {
                         Text("Login")
@@ -50,6 +53,15 @@ struct ContentView: View {
                             .frame(maxWidth: .infinity)
                             .background(Color("BackBut"))
                             .cornerRadius(10)
+                    }.alert("Error", isPresented: $alert) {
+                        Button {
+                            
+                        } label: {
+                            Text("OK")
+                        }
+                        
+                    } message: {
+                        Text(alertMessage)
                     }
                     .padding(.horizontal,30)
                     .padding(.top,30)
@@ -76,6 +88,16 @@ struct ContentView: View {
     var bgc: some View {
         Color("BackA")
             .ignoresSafeArea()
+    }
+    
+    func checkFields(){
+        if name.isEmpty || password.isEmpty {
+            alertMessage = "Todos los campos debe estar introducidos."
+            self.alert = true
+        } else {
+            viewModel.login(name: name,password: password)
+            self.presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 

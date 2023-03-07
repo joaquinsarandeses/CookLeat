@@ -9,10 +9,18 @@ import SwiftUI
 
 struct SearchView: View {
     let options = ["Recetas", "Categorías"]
-    @State  var selectedOption = 0
-    
+    @State var selectedOption = 0
+    @ObservedObject var viewModel = ViewModel()
     @State var search: String = ""
     @State var showCat: Bool = true
+    
+    var filteredRecipes: [AllPresentationModel] {
+        if selectedOption == 0 {
+            return viewModel.all.filter { $0.name.localizedCaseInsensitiveContains(search) }
+        } else {
+            return viewModel.all.filter { $0.category.localizedCaseInsensitiveContains(search) }
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -27,53 +35,32 @@ struct SearchView: View {
                     
                     Picker(selection: $selectedOption, label: Text("Escoge una categoría:")) {
                         ForEach(0..<options.count) { index in
-                            Text(options[index])
+                            Text(self.options[index]).tag(index)
                         }
                         
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
                         
-
                               
                     //MARK: aquí tenemos la tabla donde aparece todo lo que busquemos
                     ScrollView(.vertical){
                         
                         LazyVStack {
-                            ForEach(data, id: \.id) { cell in
-                                HStack {
-                                    cell.image
-                                        .resizable()
-                                        .frame(width: 90, height: 90)
-                                    
-                                    VStack() {
-                                        Text(cell.title)
-                                            .font(.title)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(Color("TextY"))
-                                            .lineLimit(1)
-                                        Text(cell.subtitle)
-                                            .font(.subheadline)
-                                        Text(cell.cat)
-                                            .foregroundColor(Color.white)
-                                            .frame(width: 60, height: 20)
-                                            .background(.gray)
-                                            .cornerRadius(10)
-                                        
-                                    }
-                                    Spacer()
-                                    cell.examp
-                                        .resizable()
-                                        .frame(width: 90, height: 90)
+                            ForEach(filteredRecipes, id: \.id) { recipe in
+                                NavigationLink(destination: PostView(viewModel: .init(allSearch: recipe))) {
+                                    item(recipe)
                                 }
-                                .background(.white)
-                                .cornerRadius(15)
                             }
+                            
                         }
                         .shadow(radius: 2)
                     }
                     .padding(10)
                 }
+            }
+            .onAppear(){
+                viewModel.getAll()
             }
         }
     }
@@ -97,6 +84,40 @@ struct SearchView: View {
      }
 }
 
+
+private func item(_ all: AllPresentationModel) -> some View {
+    HStack {
+        Image("Food")
+            .resizable()
+            .frame(width: 90, height: 90)
+        
+        VStack  {
+            Text(all.name)
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(Color("TextY"))
+                .lineLimit(1)
+            Text(all.user)
+                .font(.subheadline)
+                .foregroundColor(Color.black)
+            Text(all.category)
+                .foregroundColor(Color.white)
+                .frame(width: 65, height: 25)
+                .background(.gray)
+                .cornerRadius(10)
+                .foregroundColor(Color.black)
+            
+        }
+        
+        Spacer()
+        
+        Image("Example")
+            .resizable()
+            .frame(width: 90, height: 90)
+    }
+    .background(.white)
+    .cornerRadius(15)
+}
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView()

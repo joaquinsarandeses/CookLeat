@@ -7,6 +7,34 @@
 
 import Foundation
 
+struct MyEventsPresentationModel: Identifiable {
+    var id = UUID()
+    var name: String
+    var image: String
+    var description: String
+    var user: String
+    var userPic: String
+    var category: String
+    
+    init() {
+        self.name = ""
+        self.image = ""
+        self.description = ""
+        self.user = ""
+        self.userPic = ""
+        self.category = ""
+    }
+    
+    init(dataModel: UsersRecipeDataModel?) {
+        self.name = dataModel?.name ?? " "
+        self.image = dataModel?.image ?? " "
+        self.description = dataModel?.description ?? " "
+        self.user = dataModel?.user ?? " "
+        self.userPic = dataModel?.userPic ?? " "
+        self.category = dataModel?.category ?? "Carne"
+    }
+}
+
 extension ProfileView {
     //MARK: user presentation model
     struct UserPresentationModel: Identifiable {
@@ -31,33 +59,7 @@ extension ProfileView {
         }
     }
     //MARK: Events presentationModel
-    struct MyEventsPresentationModel: Identifiable {
-        var id = UUID()
-        var name: String
-        var image: String
-        var description: String
-        var user: String
-        var userPic: String
-        var category: String
-        
-        init() {
-            self.name = ""
-            self.image = ""
-            self.description = ""
-            self.user = ""
-            self.userPic = ""
-            self.category = ""
-        }
-        
-        init(dataModel: UsersRecipeDataModel?) {
-            self.name = dataModel?.name ?? " "
-            self.image = dataModel?.image ?? " "
-            self.description = dataModel?.description ?? " "
-            self.user = dataModel?.user ?? " "
-            self.userPic = dataModel?.userPic ?? " "
-            self.category = dataModel?.category ?? "Carne"
-        }
-    }
+   
     
     class ViewModel: ObservableObject {
         @Published var shouldUpdate: Bool = false
@@ -65,6 +67,8 @@ extension ProfileView {
         
         @Published var profile: UserPresentationModel = .init()
         @Published var myEvents: [MyEventsPresentationModel] = []
+        
+        
         
         
         //MARK: Recibir los datos del usuario

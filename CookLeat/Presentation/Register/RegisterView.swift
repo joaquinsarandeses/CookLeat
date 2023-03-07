@@ -89,13 +89,13 @@ struct RegisterView: View {
     
     func checkFields(){
         if email.isEmpty || password.isEmpty || reppassword.isEmpty || name.isEmpty{
-            alertMessage = "All fields must be filled."
+            alertMessage = "Todos los campos deben estar llenos."
             self.alert = true
         } else if password != reppassword {
-            alertMessage = "Passwords don´t match."
+            alertMessage = "Las contraseñas no coinciden."
             self.alert = true
         } else if password.count < 7{
-            alertMessage = "Passwords must be at least 8 characters."
+            alertMessage = "La contraseña debe tener al menos 8 caracteres."
             self.alert = true
         } else {
             viewModel.register(name: name, email: email, password: password)
