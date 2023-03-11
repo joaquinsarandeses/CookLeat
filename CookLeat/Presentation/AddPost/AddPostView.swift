@@ -128,7 +128,9 @@ struct AddPostView: View {
                     .frame(width: 60, height: 45)
                     .padding(.leading, 10)
                 Spacer()
+                
             }
+            
         }
         .frame(height: 50)
         .background(Color("BackB"))

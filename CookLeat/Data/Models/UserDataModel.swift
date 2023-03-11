@@ -14,3 +14,4 @@ struct UserDataModel: Decodable {
     var followers: Int?
     var follows: Int?
 }
+

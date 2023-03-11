@@ -11,8 +11,10 @@ struct FollowersDataModel: Decodable {
     var id: Int?
     var name:String?
     var image: String?
+    var follower_count: Int?
+    var followed_count: Int?
 }
 
-struct FolowersListDataModel: Decodable {
+struct FollowersListDataModel: Decodable {
     var followers: [FollowersDataModel?]
 }

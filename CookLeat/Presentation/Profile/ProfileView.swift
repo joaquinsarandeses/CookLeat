@@ -68,7 +68,7 @@ struct ProfileView: View {
                             HStack{
                                 NavigationLink(destination: FollowersView()) {
                                     VStack{
-                                        Text("\(viewModel.profile.follows)")
+                                        Text("\(viewModel.profile.followers)")
                                             .fontWeight(.bold)
                                             .font(.system(size: 30))
                                         Text("Seguidores")
@@ -81,7 +81,7 @@ struct ProfileView: View {
                                 .padding(.trailing,40)
                                 NavigationLink(destination: FollowedView()) {
                                     VStack{
-                                        Text("\(viewModel.profile.followers)")
+                                        Text("\(viewModel.profile.follows)")
                                             .fontWeight(.bold)
                                             .font(.system(size: 30))
                                         Text("Seguidos")

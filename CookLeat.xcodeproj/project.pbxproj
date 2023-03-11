@@ -18,6 +18,7 @@
 		2D42E6A629AE4AA4000B1879 /* RegisterView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D42E6A529AE4AA4000B1879 /* RegisterView-ViewModel.swift */; };
 		2D49A5F029B6551900ED8458 /* SearchView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49A5EF29B6551900ED8458 /* SearchView-ViewModel.swift */; };
 		2D49A5F229B6686300ED8458 /* PostView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49A5F129B6686300ED8458 /* PostView-ViewModel.swift */; };
+		2D49A5F429B7F16700ED8458 /* OthersProfileView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49A5F329B7F16700ED8458 /* OthersProfileView-ViewModel.swift */; };
 		2D4A186E2943A55D00827A5B /* CookLeatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4A186D2943A55D00827A5B /* CookLeatApp.swift */; };
 		2D4A18702943A55D00827A5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4A186F2943A55D00827A5B /* ContentView.swift */; };
 		2D4A18722943A55E00827A5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D4A18712943A55E00827A5B /* Assets.xcassets */; };
@@ -28,7 +29,7 @@
 		2D577A1C299E7F2400AB1A6E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A1B299E7F2400AB1A6E /* SearchView.swift */; };
 		2D577A1F299E821F00AB1A6E /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A1E299E821F00AB1A6E /* AddPostView.swift */; };
 		2D577A21299E84A300AB1A6E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A20299E84A300AB1A6E /* ProfileView.swift */; };
-		2D577A23299E855500AB1A6E /* Profile2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A22299E855500AB1A6E /* Profile2View.swift */; };
+		2D577A23299E855500AB1A6E /* OthersProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A22299E855500AB1A6E /* OthersProfileView.swift */; };
 		2D577A25299E864900AB1A6E /* CustomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A24299E864900AB1A6E /* CustomTab.swift */; };
 		2D577A27299E914500AB1A6E /* FollowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A26299E914500AB1A6E /* FollowedView.swift */; };
 		2D577A29299E916300AB1A6E /* FollowersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D577A28299E916300AB1A6E /* FollowersView.swift */; };
@@ -54,6 +55,7 @@
 		2D42E6A529AE4AA4000B1879 /* RegisterView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterView-ViewModel.swift"; sourceTree = "<group>"; };
 		2D49A5EF29B6551900ED8458 /* SearchView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchView-ViewModel.swift"; sourceTree = "<group>"; };
 		2D49A5F129B6686300ED8458 /* PostView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostView-ViewModel.swift"; sourceTree = "<group>"; };
+		2D49A5F329B7F16700ED8458 /* OthersProfileView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OthersProfileView-ViewModel.swift"; sourceTree = "<group>"; };
 		2D4A186A2943A55D00827A5B /* CookLeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookLeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4A186D2943A55D00827A5B /* CookLeatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookLeatApp.swift; sourceTree = "<group>"; };
 		2D4A186F2943A55D00827A5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,7 +67,7 @@
 		2D577A1B299E7F2400AB1A6E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		2D577A1E299E821F00AB1A6E /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
 		2D577A20299E84A300AB1A6E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		2D577A22299E855500AB1A6E /* Profile2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile2View.swift; sourceTree = "<group>"; };
+		2D577A22299E855500AB1A6E /* OthersProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersProfileView.swift; sourceTree = "<group>"; };
 		2D577A24299E864900AB1A6E /* CustomTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab.swift; sourceTree = "<group>"; };
 		2D577A26299E914500AB1A6E /* FollowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowedView.swift; sourceTree = "<group>"; };
 		2D577A28299E916300AB1A6E /* FollowersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersView.swift; sourceTree = "<group>"; };
@@ -154,7 +156,8 @@
 		2D3F4ACB29AFD673006CF418 /* Profile2 */ = {
 			isa = PBXGroup;
 			children = (
-				2D577A22299E855500AB1A6E /* Profile2View.swift */,
+				2D577A22299E855500AB1A6E /* OthersProfileView.swift */,
+				2D49A5F329B7F16700ED8458 /* OthersProfileView-ViewModel.swift */,
 			);
 			path = Profile2;
 			sourceTree = "<group>";
@@ -357,10 +360,11 @@
 				2D9D9F4D29B517A0000D14D4 /* FollowedDataModel.swift in Sources */,
 				2D3F4AE629B26502006CF418 /* RecipeDataModel.swift in Sources */,
 				2D577A25299E864900AB1A6E /* CustomTab.swift in Sources */,
+				2D49A5F429B7F16700ED8458 /* OthersProfileView-ViewModel.swift in Sources */,
 				2D9D9F4F29B517AD000D14D4 /* FolowersDataModel.swift in Sources */,
 				2D42E6A129AD69C0000B1879 /* NetworkHelper.swift in Sources */,
 				2D9D9F4929B51742000D14D4 /* FollowedView-ViewModel.swift in Sources */,
-				2D577A23299E855500AB1A6E /* Profile2View.swift in Sources */,
+				2D577A23299E855500AB1A6E /* OthersProfileView.swift in Sources */,
 				2D577A1A299E7E3500AB1A6E /* HomeView.swift in Sources */,
 				2D49A5F029B6551900ED8458 /* SearchView-ViewModel.swift in Sources */,
 				2D577A27299E914500AB1A6E /* FollowedView.swift in Sources */,
