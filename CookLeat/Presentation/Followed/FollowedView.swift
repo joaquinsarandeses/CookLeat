@@ -21,27 +21,29 @@ struct FollowedView: View {
                     
                     //MARK: aquí tenemos la tabla donde aparece todo lo que busquemos
                     ScrollView(.vertical){
-                        
+
                         LazyVStack {
-                            ForEach(viewModel.followed, id: \.id) { cell in
-                                HStack {
-                                    Image("Example")
-                                        .resizable()
-                                        .frame(width: 90, height: 90)
-                                    
-                                    VStack() {
-                                        Text(cell.name)
-                                            .font(.title)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(Color("TextY"))
-                                            .lineLimit(1)
+                            ForEach(viewModel.followed, id: \.uuid) { followed in
+                                NavigationLink(destination: OthersProfileView(viewModel: .init(followed: followed))) {
+                                    HStack {
+                                        Image("Example")
+                                            .resizable()
+                                            .frame(width: 90, height: 90)
+                                        
+                                        VStack() {
+                                            Text(followed.name)
+                                                .font(.title)
+                                                .fontWeight(.bold)
+                                                .foregroundColor(Color("TextY"))
+                                                .lineLimit(1)
+                                            
+                                        }
+                                        Spacer()
                                         
                                     }
-                                    Spacer()
-                                   
+                                    .background(.white)
+                                    .cornerRadius(15)
                                 }
-                                .background(.white)
-                                .cornerRadius(15)
                             }
                         }
                         .shadow(radius: 2)
@@ -57,10 +59,6 @@ struct FollowedView: View {
             }
     private  var navBar: some View {
          ZStack {
-             Text("Seguidos")
-                 .font(.title)
-                 .fontWeight(.bold)
-                 .foregroundColor(Color.white)
              
              HStack()  {
                  NavigationLink(destination: CustomTab()){
@@ -77,6 +75,8 @@ struct FollowedView: View {
          .background(Color("BackB"))
      }
 }
+
+
 
 struct FollowedView_Previews: PreviewProvider {
     static var previews: some View {

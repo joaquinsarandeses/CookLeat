@@ -61,6 +61,14 @@ extension PostView{
             self.userPic = allSearch.userPic
             self.category = allSearch.category
         }
+        init(otherPost: OthersEventsPresentationModel) {
+            self.name = otherPost.name
+            self.image = otherPost.image
+            self.description = otherPost.description
+            self.user = otherPost.user
+            self.userPic = otherPost.userPic
+            self.category = otherPost.category
+        }
         
     }
     

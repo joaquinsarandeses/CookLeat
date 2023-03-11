@@ -7,23 +7,35 @@
 
 import Foundation
 
-extension FollowedView{
-    struct FollowedPresentationModel: Identifiable {
-        var id = UUID()
-        var name: String
-        var image: String
-        
-        init() {
-            self.name = ""
-            self.image = ""
+struct FollowedPresentationModel: Identifiable {
+    var uuid = UUID()
+    var id: Int
+    var name: String
+    var image: String
+    var follows: Int
+    var followers: Int
 
-        }
+    
+    init() {
+        self.id = 1
+        self.name = ""
+        self.image = ""
+        self.followers = 1
+        self.follows = 1
         
-        init(dataModel: FollowedDataModel?) {
-            self.name = dataModel?.name ?? ""
-            self.image = dataModel?.image ?? ""
-        }
     }
+    
+    init(dataModel: FollowedDataModel?) {
+        self.id = dataModel?.id ?? 1
+        self.name = dataModel?.name ?? ""
+        self.image = dataModel?.image ?? ""
+        self.follows = dataModel?.followed_count ?? 1
+        self.followers = dataModel?.follower_count ?? 1
+    }
+}
+
+extension FollowedView{
+    
     
     class ViewModel: ObservableObject{
         @Published var followed: [FollowedPresentationModel] = []
@@ -40,12 +52,11 @@ extension FollowedView{
                         do {
                             let followedDataModel = try  JSONDecoder().decode(FolowedListDataModel.self, from: data)
                             // access the user properties as needed
-                            //print(recipeDataModel)
                             print("\(followedDataModel)")
                             self.followed = followedDataModel.followers.compactMap({ followed in
                                 return FollowedPresentationModel(dataModel: followed)
                             })
-                            
+                            print("")
                         } catch {
                             print(error.localizedDescription)
                         }

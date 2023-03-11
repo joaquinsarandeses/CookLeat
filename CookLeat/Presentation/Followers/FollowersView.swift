@@ -23,23 +23,25 @@ struct FollowersView: View {
                         
                         LazyVStack {
                             ForEach(viewModel.followers, id: \.id) { cell in
-                                HStack {
-                                    Image("Example")
-                                        .resizable()
-                                        .frame(width: 90, height: 90)
-                                    
-                                    VStack() {
-                                        Text(cell.name)
-                                            .font(.title)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(Color("TextY"))
-                                            .lineLimit(1)
+                                NavigationLink(destination: OthersProfileView(viewModel: .init(follows: cell))) {
+                                    HStack {
+                                        Image("Example")
+                                            .resizable()
+                                            .frame(width: 90, height: 90)
                                         
+                                        VStack() {
+                                            Text(cell.name)
+                                                .font(.title)
+                                                .fontWeight(.bold)
+                                                .foregroundColor(Color("TextY"))
+                                                .lineLimit(1)
+                                            
+                                        }
+                                        Spacer()
                                     }
-                                    Spacer()
+                                    .background(.white)
+                                    .cornerRadius(15)
                                 }
-                                .background(.white)
-                                .cornerRadius(15)
                             }
                         }
                         .shadow(radius: 2)
@@ -55,10 +57,6 @@ struct FollowersView: View {
     }
     private  var navBar: some View {
          ZStack {
-             Text("Seguidores")
-                 .font(.title)
-                 .fontWeight(.bold)
-                 .foregroundColor(Color.white)
              
              HStack()  {
                  Image(systemName: "arrowshape.left.fill")

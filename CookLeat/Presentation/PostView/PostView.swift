@@ -90,12 +90,20 @@ struct PostView: View {
                 .foregroundColor(Color.white)
             
             HStack()  {
-                Image(systemName: "arrowshape.left.fill")
-                    .resizable()
-                    .foregroundColor(Color("BackB"))
-                    .frame(width: 60, height: 45)
-                    .padding(.leading, 10)
+               
                 Spacer()
+                Button {
+                    print("hola")
+                } label: {
+                    Image(systemName: "heart")
+                        .resizable()
+                        .foregroundColor(Color.red)
+                        .frame(width: 45, height: 45)
+                        .padding(.trailing, 40)
+                        .padding(.top,-10)
+                }
+
+               
             }
         }
         .frame(height: 50)
