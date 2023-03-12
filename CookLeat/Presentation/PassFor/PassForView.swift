@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct PassForView: View {
-    @State var name: String = ""
-    @State var password: String = ""
+struct NewPasswordView: View {
+    @ObservedObject var viewModel: ViewModel = ViewModel()
+    
+    @State var mail: String = ""
     var body: some View {
         ZStack{
             bgc
@@ -27,13 +28,13 @@ struct PassForView: View {
                     .foregroundColor(Color.white)
                     .padding(.horizontal, 30.0)
                 
-                TextField("Correo electrónico", text: $name)
+                TextField("Correo electrónico", text: $mail)
                     .customDesign()
                     .padding(.top,80)
                 
                 
                 Button{
-                    
+                    viewModel.recoverPassword(email: mail)
                 }label: {
                     Text("Enviar correo")
                         .font(.title)
@@ -65,6 +66,6 @@ struct PassForView: View {
 
 struct PassForView_Previews: PreviewProvider {
     static var previews: some View {
-        PassForView()
+        NewPasswordView()
     }
 }
