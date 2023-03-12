@@ -34,7 +34,7 @@ struct ContentView: View {
                         .customDesign()
                         .padding(.top,5)
                     NavigationLink{
-                        PassForView()
+                        NewPasswordView()
                     }label:{
                         Text("¿Has olvidado tu contraseña?\(Text("Pulsa aquí.").underline())")
                             .foregroundColor(Color.white)

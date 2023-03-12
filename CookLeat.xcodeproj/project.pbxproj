@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D3F116129BE341700AA3FB3 /* NewPasswordView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F116029BE341700AA3FB3 /* NewPasswordView-ViewModel.swift */; };
 		2D3F4AD229B0027A006CF418 /* AddPostView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AD129B0027A006CF418 /* AddPostView-ViewModel.swift */; };
 		2D3F4AD529B0079C006CF418 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AD429B0079C006CF418 /* UserData.swift */; };
 		2D3F4AD729B00929006CF418 /* ProfileView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F4AD629B00929006CF418 /* ProfileView-ViewModel.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D3F116029BE341700AA3FB3 /* NewPasswordView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewPasswordView-ViewModel.swift"; sourceTree = "<group>"; };
 		2D3F4AD129B0027A006CF418 /* AddPostView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddPostView-ViewModel.swift"; sourceTree = "<group>"; };
 		2D3F4AD429B0079C006CF418 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		2D3F4AD629B00929006CF418 /* ProfileView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView-ViewModel.swift"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				2D577A17299E7BF200AB1A6E /* PassForView.swift */,
+				2D3F116029BE341700AA3FB3 /* NewPasswordView-ViewModel.swift */,
 			);
 			path = PassFor;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				2D577A15299E7B7E00AB1A6E /* SplashView.swift in Sources */,
 				2D7A9F1629AF726C00B4C943 /* Components.swift in Sources */,
 				2D577A1C299E7F2400AB1A6E /* SearchView.swift in Sources */,
+				2D3F116129BE341700AA3FB3 /* NewPasswordView-ViewModel.swift in Sources */,
 				2D9D9F4D29B517A0000D14D4 /* FollowedDataModel.swift in Sources */,
 				2D3F4AE629B26502006CF418 /* RecipeDataModel.swift in Sources */,
 				2D577A25299E864900AB1A6E /* CustomTab.swift in Sources */,
