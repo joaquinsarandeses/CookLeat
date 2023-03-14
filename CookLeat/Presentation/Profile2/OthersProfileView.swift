@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct OthersProfileView: View {
-
     
+    @State var followed = true
     @ObservedObject var viewModel : ViewModel
     
     var body: some View {
@@ -17,9 +17,7 @@ struct OthersProfileView: View {
             ZStack{
                 VStack{
                     navBar
-                    
                     HStack{
-                        
                         Image("ProfilePic")
                             .padding(.trailing,20)
                         VStack{
@@ -30,9 +28,7 @@ struct OthersProfileView: View {
                                 .padding(.trailing,70)
                                 .foregroundColor(Color("BackBut"))
                                 .padding(.bottom,5)
-                            
                             HStack{
-                                
                                 VStack{
                                     Text("\(viewModel.otherProfile.followers)")
                                         .fontWeight(.bold)
@@ -55,21 +51,36 @@ struct OthersProfileView: View {
                         }
                     }
                     Button{
-                        
+                        if followed == true{
+                            followed = false
+                        }else {
+                            followed = true
+                        }
                     }label: {
-                        Text("Seguir")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .frame(height: 40)
-                            .frame(maxWidth: .infinity)
-                            .background(Color("BackA"))
-                            .cornerRadius(30)
+                        if followed == true{
+                            Text("Seguido")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("BackA"))
+                                .frame(height: 40)
+                                .frame(maxWidth: .infinity)
+                                .background(Color.white)
+                                .cornerRadius(30)
+                                .border(Color("BackA"),width: 5)
+                            
+                        }else{
+                            Text("Seguir")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(height: 40)
+                                .frame(maxWidth: .infinity)
+                                .background(Color("BackA"))
+                                .cornerRadius(30)
+                        }
                     }.padding(.horizontal,70)
                     
-                    
-                    
-                    ScrollView(.vertical){
+                     ScrollView(.vertical){
                         //MARK: Posts
                         LazyVStack {
                             ForEach(viewModel.othersEvents, id: \.id) { followed in
@@ -114,8 +125,6 @@ struct OthersProfileView: View {
             }
             .frame(height: 50)
             .background(Color("BackB"))
-            
-            
             
         }
     }

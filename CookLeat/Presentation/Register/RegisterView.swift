@@ -71,12 +71,6 @@ struct RegisterView: View {
                     .padding(.bottom,50)
                 
             }
-            ZStack {
-                NavigationLink(destination: CustomTab(), isActive: $viewModel.shouldShowHome) {
-                    EmptyView()
-                }
-                .hidden()
-            }
         }
         
     }

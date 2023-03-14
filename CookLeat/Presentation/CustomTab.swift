@@ -14,12 +14,13 @@ enum TabViewList{
     
 }
 struct CustomTab: View {
-    
     @State private var selectedTab: TabViewList = .home
-    init() {
-        UITabBar.appearance().backgroundColor = UIColor(Color("BackA"))
-    }
+    @Binding var shouldShowHome: Bool
     
+    init(shouldShowHome: Binding<Bool>) {
+        UITabBar.appearance().backgroundColor = UIColor(Color("BackA"))
+        self._shouldShowHome = shouldShowHome
+    }
     
     var body: some View {
         NavigationView{
@@ -56,7 +57,9 @@ struct CustomTab: View {
                         }
                     }
                 
-                ProfileView()
+                ProfileView(onDismiss: {
+                    shouldShowHome = false
+                })
                     .tag(TabViewList.profile)
                     .tabItem {
                         Label {
@@ -76,6 +79,6 @@ struct CustomTab: View {
 
 struct CustomTab_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTab()
+        CustomTab(shouldShowHome: .constant(false))
     }
 }
