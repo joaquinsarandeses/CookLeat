@@ -50,9 +50,7 @@ extension ContentView {
         }
         
         func onSuccess() {
-            DispatchQueue.main.async {
-                self.shouldShowHome = true
-                }
+            self.shouldShowHome = true
         }
         
         func onError(error: String) {

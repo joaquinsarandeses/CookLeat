@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PostView: View {
     let viewModel: ViewModel
+    @State var like: Bool = false
+    
     var body: some View {
         ZStack{
             VStack (spacing: 20){
@@ -93,14 +95,28 @@ struct PostView: View {
                
                 Spacer()
                 Button {
-                    print("hola")
+    
+                    if like == true{
+                        like = false
+                    }else {
+                        like = true
+                    }
                 } label: {
-                    Image(systemName: "heart")
-                        .resizable()
-                        .foregroundColor(Color.red)
-                        .frame(width: 45, height: 45)
-                        .padding(.trailing, 40)
-                        .padding(.top,-10)
+                    if like == false{
+                        Image(systemName: "heart")
+                            .resizable()
+                            .foregroundColor(Color.red)
+                            .frame(width: 45, height: 45)
+                            .padding(.trailing, 40)
+                            .padding(.top,-10)
+                    }else{
+                        Image(systemName: "heart.fill")
+                            .resizable()
+                            .foregroundColor(Color.red)
+                            .frame(width: 45, height: 45)
+                            .padding(.trailing, 40)
+                            .padding(.top,-10)
+                    }
                 }
 
                

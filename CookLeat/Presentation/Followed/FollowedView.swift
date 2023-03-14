@@ -59,15 +59,13 @@ struct FollowedView: View {
             }
     private  var navBar: some View {
          ZStack {
-             
              HStack()  {
-                 NavigationLink(destination: CustomTab()){
-                     Image(systemName: "arrowshape.left.fill")
-                         .resizable()
-                         .foregroundColor(Color("BackB"))
-                         .frame(width: 60, height: 45)
-                         .padding(.leading, 10)
-                 }
+                 Image(systemName: "arrowshape.left.fill")
+                     .resizable()
+                     .foregroundColor(Color("BackB"))
+                     .frame(width: 60, height: 45)
+                     .padding(.leading, 10)
+                 
                  Spacer()
              }
          }

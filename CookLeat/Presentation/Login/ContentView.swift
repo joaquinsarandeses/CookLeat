@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var password: String = ""
     @State private var alert = false
     @State private var alertMessage = ""
+    @State var shouldShowHome: Bool = false
     
     var body: some View {
         NavigationView { // wrap the VStack in a NavigationView
@@ -73,14 +74,13 @@ struct ContentView: View {
                             .foregroundColor(Color.white)
                             .padding(.top,150)
                     }
-                }
-                
-                ZStack {
-                    NavigationLink(destination: CustomTab(), isActive: $viewModel.shouldShowHome) {
+                }.background(
+                    NavigationLink(destination: CustomTab(shouldShowHome: $shouldShowHome), isActive: $shouldShowHome) {
                         EmptyView()
                     }
-                    .hidden()
-                }
+                )
+            }.onReceive(viewModel.$shouldShowHome) { newValue in
+                shouldShowHome = newValue
             }
         }
     }
