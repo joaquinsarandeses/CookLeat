@@ -87,10 +87,17 @@ struct SearchView: View {
 
 private func item(_ all: AllPresentationModel) -> some View {
     HStack {
-        Image("Food")
-            .resizable()
-            .frame(width: 90, height: 90)
+        if let imageUrlString = all.image as? String,
+           let imageUrl = URL(string: imageUrlString) {
+            RemoteImage(imageUrl: imageUrl)
+                .frame(width: 90, height: 90)
+        } else {
+            Image("food")
+                .foregroundColor(.red)
+                .frame(width: 90, height: 90)
+        }
         
+        Spacer()
         VStack  {
             Text(all.name)
                 .font(.title2)
@@ -111,9 +118,16 @@ private func item(_ all: AllPresentationModel) -> some View {
         
         Spacer()
         
-        Image("Example")
-            .resizable()
-            .frame(width: 90, height: 90)
+        if let imageUrlString = all.userPic as? String,
+           let imageUrl = URL(string: imageUrlString) {
+            RemoteImage(imageUrl: imageUrl)
+                .frame(width: 90, height: 90)
+        } else {
+            Image("food")
+                .foregroundColor(.red)
+                .frame(width: 90, height: 90)
+        }
+        
     }
     .background(.white)
     .cornerRadius(15)

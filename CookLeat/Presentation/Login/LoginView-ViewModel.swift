@@ -14,7 +14,7 @@ extension ContentView {
         
 
         func login(name: String, password: String) {
-            let url = "http://127.0.0.1:8000/api/user/login"
+            let url = "https://4345-77-230-119-36.ngrok-free.app/api/user/login"
             
             let dictionary: [String: Any] = [
                 "name" : name,

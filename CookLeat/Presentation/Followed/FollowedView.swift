@@ -26,10 +26,17 @@ struct FollowedView: View {
                             ForEach(viewModel.followed, id: \.uuid) { followed in
                                 NavigationLink(destination: OthersProfileView(viewModel: .init(followed: followed))) {
                                     HStack {
-                                        Image("Example")
-                                            .resizable()
-                                            .frame(width: 90, height: 90)
                                         
+                                        if let imageUrlString = followed.image as? String,
+                                           let imageUrl = URL(string: imageUrlString) {
+                                            RemoteImage(imageUrl: imageUrl)
+                                                .frame(width: 90, height: 90)
+                                        } else {
+                                            Image("Example")
+                                                .foregroundColor(.red)
+                                                .frame(width: 90, height: 90)
+                                        }
+
                                         VStack() {
                                             Text(followed.name)
                                                 .font(.title)

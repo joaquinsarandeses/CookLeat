@@ -13,7 +13,7 @@ struct RecipeDataModel: Decodable {
     var image: String?
     var description: String?
     var user: String?
-    var userPic: String?
+    var profilePicture: String?
     var category: String?
 }
 
@@ -26,7 +26,7 @@ struct UsersRecipeDataModel: Decodable {
     var image: String?
     var description: String?
     var user: String?
-    var userPic: String?
+    var profilePicture: String?
     var category: String?
 }
 struct MyRecipeDataModel: Decodable {
@@ -39,7 +39,7 @@ struct OthersRecipeDataModel: Decodable {
     var image: String?
     var description: String?
     var user: String?
-    var userPic: String?
+    var profilePicture: String?
     var category: String?
 }
 struct OtherUserRecipeDataModel: Decodable {
@@ -54,7 +54,7 @@ struct LikedDataModel: Decodable {
     var image: String?
     var description: String?
     var user: String?
-    var userPic: String?
+    var profilePicture: String?
     var category: String?
 }
 struct LikedRecipeDataModel: Decodable {
@@ -68,7 +68,7 @@ struct AllRecipeDataModel: Decodable {
     var image: String?
     var description: String?
     var user: String?
-    var userPic: String?
+    var profilePicture: String?
     var category: String?
 }
 

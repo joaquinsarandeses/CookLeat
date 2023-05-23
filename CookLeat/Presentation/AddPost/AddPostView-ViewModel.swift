@@ -15,7 +15,7 @@ extension AddPostView {
 
         func addPost(name: String,description: String, user: Int,category: Int, image: String) {
             
-            let url = "http://127.0.0.1:8000/api/recipe/create"
+            let url = "https://4345-77-230-119-36.ngrok-free.app/api/recipe/create"
             
             let dictionary: [String: Any] = [
                 "name" : name,

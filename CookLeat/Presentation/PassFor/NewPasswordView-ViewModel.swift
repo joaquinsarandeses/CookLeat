@@ -12,7 +12,7 @@ extension NewPasswordView{
         
         func recoverPassword(email: String) {
             
-            let url = "http://127.0.0.1:8000/api/password/recover"
+            let url = "https://4345-77-230-119-36.ngrok-free.app/api/password/recover"
             
             let dictionary: [String: Any] = [
                 "email" : email

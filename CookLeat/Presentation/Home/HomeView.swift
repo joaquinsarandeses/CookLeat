@@ -16,16 +16,6 @@ struct Cell: Identifiable {
     let cat: String
 }
 
-let data: [Cell] = [
-    Cell(image: Image("Food"), title: "Title 1", subtitle: "Subtitle 1",examp: Image("Example"), cat: "Postre"),
-    Cell(image: Image("Food"), title: "Title 2", subtitle: "Subtitle 2",examp: Image("Example"),cat: "Postre"),
-    Cell(image: Image("Food"), title: "Title 3", subtitle: "Subtitle 3",examp: Image("Example"),cat: "Postre"),
-    Cell(image: Image("Food"), title: "Title 4", subtitle: "Subtitle 4",examp: Image("Example"),cat: "Postre"),
-    Cell(image: Image("Food"), title: "Title 5", subtitle: "Subtitle 5",examp: Image("Example"),cat: "Carne"),
-    Cell(image: Image("Food"), title: "Title 6", subtitle: "Subtitle 6",examp: Image("Example"),cat: "Carne"),
-    Cell(image: Image("Food"), title: "Title 7", subtitle: "Subtitle 7",examp: Image("Example"),cat: "Carne")
-]
-
 struct HomeView: View {
     @ObservedObject var viewModel = ViewModel()
     @Binding var selectedTab: TabViewList
@@ -42,11 +32,6 @@ struct HomeView: View {
                         .frame(width: 30, height: 30)
                         .foregroundColor(Color("BackA"))
                         .padding(5)
-                    //                        .onTapGesture {
-                    //                            selectedTab = .search
-                    //                        }
-                    // ejemplo navegación tab
-                    
                     
                     Text("Añadidos recientemente")
                         .fontWeight(.bold)
@@ -139,10 +124,17 @@ struct HomeView: View {
     
     private func recentItem (_ recent: RecentPresentationModel) -> some View{
         VStack(alignment: .leading) {
-            Image("Food")
-                .resizable()
-                .frame(width: 150, height: 100)
-                .cornerRadius(10)
+            if let imageUrlString = recent.image as? String,
+               let imageUrl = URL(string: imageUrlString) {
+                RemoteImage(imageUrl: imageUrl)
+                    .frame(width: 150, height: 100)
+                    .cornerRadius(10)
+            } else {
+                Image("food")
+                    .foregroundColor(.red)
+                    .frame(width: 150, height: 100)
+                    .cornerRadius(10)
+            }
             Text(recent.name)
                 .font(.headline)
                 .foregroundColor(Color("TextY"))
@@ -158,10 +150,17 @@ struct HomeView: View {
     
     private func item(_ likes: LikePresentationModel) -> some View {
         HStack {
-            Image("Food")
-                .resizable()
-                .frame(width: 90, height: 90)
             
+            if let imageUrlString = likes.image as? String,
+               let imageUrl = URL(string: imageUrlString) {
+                RemoteImage(imageUrl: imageUrl)
+                    .frame(width: 90, height: 90)
+            } else {
+                Image("food")
+                    .foregroundColor(.red)
+                    .frame(width: 90, height: 90)
+            }
+            Spacer()
             VStack  {
                 Text(likes.name)
                     .font(.title2)
@@ -182,9 +181,15 @@ struct HomeView: View {
             
             Spacer()
             
-            Image("Example")
-                .resizable()
-                .frame(width: 90, height: 90)
+            if let imageUrlString = likes.userPic as? String,
+               let imageUrl = URL(string: imageUrlString) {
+                RemoteImage(imageUrl: imageUrl)
+                    .frame(width: 90, height: 90)
+            } else {
+                Image("food")
+                    .foregroundColor(.red)
+                    .frame(width: 90, height: 90)
+            }
         }
         .background(.white)
         .cornerRadius(15)
@@ -197,3 +202,44 @@ struct HomeView_Previews: PreviewProvider {
         HomeView(selectedTab: .constant(.home))
     }
 }
+
+struct RemoteImage: View {
+    @ObservedObject private var imageLoader: ImageLoader
+    private var placeholder: Image
+    
+    init(imageUrl: URL?, placeholder: Image = Image(systemName: "photo")) {
+        self._imageLoader = ObservedObject(wrappedValue: ImageLoader(imageUrl: imageUrl))
+        self.placeholder = placeholder
+    }
+    
+    var body: some View {
+        if let image = imageLoader.image {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFill()
+        } else {
+            placeholder
+                .resizable()
+                .scaledToFill()
+        }
+    }
+}
+
+class ImageLoader: ObservableObject {
+    @Published var image: UIImage?
+    
+    init(imageUrl: URL?) {
+        guard let imageUrl = imageUrl else { return }
+        
+        URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Failed to fetch image data:", error ?? "Unknown error")
+                return
+            }
+            DispatchQueue.main.async {
+                self.image = UIImage(data: data)
+            }
+        }.resume()
+    }
+}
+

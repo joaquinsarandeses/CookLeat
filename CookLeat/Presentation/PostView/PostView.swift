@@ -17,9 +17,18 @@ struct PostView: View {
                 navBar
                     .padding(.top,-20)
                 HStack{
+                    if let imageUrlString = viewModel.userPic as? String,
+                       let imageUrl = URL(string: imageUrlString) {
+                        RemoteImage(imageUrl: imageUrl)
+                            .frame(width: 90, height: 90)
+                            .clipShape(Circle())
+                            .padding(.leading,20)
+                    } else {
+                        Image("ProfilePic")
+                            .foregroundColor(.red)
+                            .frame(width: 90, height: 90)
+                    }
                     
-                    Image("ProfilePic")
-                        .padding(.leading)
                     
                     VStack{
                         Text(viewModel.user)
@@ -42,10 +51,7 @@ struct PostView: View {
                             .padding(.trailing,70)
                             .foregroundColor(Color("BackA"))
                             .padding(.bottom,5)
-                        
-                        
-                        
-                        
+
                     }
                 }
                 
@@ -73,11 +79,18 @@ struct PostView: View {
                             
                         
                     }
-                  Image("Example")
-                        .resizable()
-                        .frame(height: .infinity)
-                        .frame(width: 350)
-                        .cornerRadius(10)
+                    if let imageUrlString = viewModel.image as? String,
+                       let imageUrl = URL(string: imageUrlString) {
+                        RemoteImage(imageUrl: imageUrl)
+                            .frame(width: 350)
+                            .cornerRadius(10)
+                    } else {
+                        Image("Example")
+                            .resizable()
+                            .frame(height: .infinity)
+                            .frame(width: 350)
+                            .cornerRadius(10)
+                    }
                 }
                 
                 Spacer()

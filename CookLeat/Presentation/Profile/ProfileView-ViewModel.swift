@@ -30,7 +30,7 @@ struct MyEventsPresentationModel: Identifiable {
         self.image = dataModel?.image ?? " "
         self.description = dataModel?.description ?? " "
         self.user = dataModel?.user ?? " "
-        self.userPic = dataModel?.userPic ?? " "
+        self.userPic = dataModel?.profilePicture ?? " "
         self.category = dataModel?.category ?? "Carne"
     }
 }
@@ -73,7 +73,7 @@ extension ProfileView {
         
         //MARK: Recibir los datos del usuario
         func getProfileData() {
-            let url = "http://127.0.0.1:8000/api/user/show/\(UserDefaults.standard.integer(forKey: "user_id"))"
+            let url = "https://4345-77-230-119-36.ngrok-free.app/api/user/show/\(UserDefaults.standard.integer(forKey: "user_id"))"
             
             NetworkHelper.shared.requestProvider(url: url , type: .GET) { data, response, error in
                 if let error = error {
@@ -99,7 +99,7 @@ extension ProfileView {
         }
         //MARK: Cambiar la foto de perfil
         func changePic(id: Int, image: String) {
-            let url = "http://127.0.0.1:8000/api/user/update"
+            let url = "https://4345-77-230-119-36.ngrok-free.app/api/user/update"
             
             let dictionary: [String: Any] = [
                 "id" : id,
@@ -132,7 +132,7 @@ extension ProfileView {
         //MARK: Recibir losn posts del usuario
         func getMyEvents(){
             
-            NetworkHelper.shared.requestProvider(url: "http://127.0.0.1:8000/api/user/userRecipes/\(UserDefaults.standard.integer(forKey: "user_id"))", type: .GET) { data, response, error in
+            NetworkHelper.shared.requestProvider(url: "https://4345-77-230-119-36.ngrok-free.app/api/user/userRecipes/\(UserDefaults.standard.integer(forKey: "user_id"))", type: .GET) { data, response, error in
                 if let error = error {
                     print(error.localizedDescription)
                     

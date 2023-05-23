@@ -130,6 +130,38 @@
             endingLineNumber = "157"
             landmarkName = "getMyEvents()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F66F4D3C-9B56-448D-9257-CCB49DF72FA5 - 3abd467b41655eb1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CookLeat.ProfileView.ViewModel.getMyEvents() -&gt; ()"
+                  moduleName = "CookLeat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joako/Documents/GitHub/CookLeat/CookLeat/Presentation/Profile/ProfileView-ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "1744">
+               </Location>
+               <Location
+                  uuid = "F66F4D3C-9B56-448D-9257-CCB49DF72FA5 - 3abd467b41655eb1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CookLeat.ProfileView.ViewModel.getMyEvents() -&gt; ()"
+                  moduleName = "CookLeat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joako/Documents/GitHub/CookLeat/CookLeat/Presentation/Profile/ProfileView-ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "1716">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -258,6 +290,38 @@
             endingLineNumber = "62"
             landmarkName = "getAll()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A6085DF5-0160-4B74-ADCE-5A68F0C2DAA8 - a7f667a9d47cbdd6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CookLeat.SearchView.ViewModel.getAll() -&gt; ()"
+                  moduleName = "CookLeat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joako/Documents/GitHub/CookLeat/CookLeat/Presentation/Search/SearchView-ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "3132">
+               </Location>
+               <Location
+                  uuid = "A6085DF5-0160-4B74-ADCE-5A68F0C2DAA8 - a7f667a9d47cbdd6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CookLeat.SearchView.ViewModel.getAll() -&gt; ()"
+                  moduleName = "CookLeat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joako/Documents/GitHub/CookLeat/CookLeat/Presentation/Search/SearchView-ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "3048">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -274,6 +338,38 @@
             endingLineNumber = "66"
             landmarkName = "getAll()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C9C1462C-912D-4D5C-B139-E8A7089A28F6 - a7f667a9d47cbd4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CookLeat.SearchView.ViewModel.getAll() -&gt; ()"
+                  moduleName = "CookLeat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joako/Documents/GitHub/CookLeat/CookLeat/Presentation/Search/SearchView-ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "2432">
+               </Location>
+               <Location
+                  uuid = "C9C1462C-912D-4D5C-B139-E8A7089A28F6 - a7f667a9d47cbd4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CookLeat.SearchView.ViewModel.getAll() -&gt; ()"
+                  moduleName = "CookLeat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joako/Documents/GitHub/CookLeat/CookLeat/Presentation/Search/SearchView-ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "2376">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -286,8 +382,8 @@
             filePath = "CookLeat/Presentation/Followed/FollowedView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -424,16 +520,32 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "638AC2B7-9D18-46A4-AAA3-B74CF6DCFF04"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CookLeat/Presentation/Home/HomeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "113675DC-9154-424E-B945-FD767F4B4F25"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CookLeat/Presentation/Home/HomeView-ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "getRecent()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

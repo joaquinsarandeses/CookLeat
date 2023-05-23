@@ -41,7 +41,7 @@ extension PostView{
             self.image = recent.image
             self.description = recent.description
             self.user = recent.user
-            self.userPic = recent.userPic
+            self.userPic = recent.profilePicture
             self.category = recent.category
         }
         init(event: MyEventsPresentationModel) {

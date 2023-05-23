@@ -41,7 +41,7 @@ extension FollowedView{
         @Published var followed: [FollowedPresentationModel] = []
         func getFollowed(){
             
-            NetworkHelper.shared.requestProvider(url: "http://127.0.0.1:8000/api/follow/list/seguidos/\(UserDefaults.standard.integer(forKey: "user_id"))", type: .GET) { data, response, error in
+            NetworkHelper.shared.requestProvider(url: "https://4345-77-230-119-36.ngrok-free.app/api/follow/list/seguidos/\(UserDefaults.standard.integer(forKey: "user_id"))", type: .GET) { data, response, error in
                 if let error = error {
                     print(error.localizedDescription)
                     
