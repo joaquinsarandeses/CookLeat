@@ -18,8 +18,18 @@ struct PostView: View {
                     .padding(.top,-20)
                 HStack{
                     
-                    Image("ProfilePic")
-                        .padding(.leading)
+                    
+                    if let imageUrlString = viewModel.profilePic as? String,
+                       let imageUrl = URL(string: imageUrlString) {
+                        RemoteImage(imageUrl: imageUrl)
+                            .frame(width: 90, height: 90)
+                            .clipShape(Circle())
+                            .padding(.leading,20)
+                    } else {
+                        Image("ProfilePic")
+                            .foregroundColor(.red)
+                            .frame(width: 90, height: 90)
+                    }
                     
                     VStack{
                         Text(viewModel.user)
@@ -73,11 +83,18 @@ struct PostView: View {
                             
                         
                     }
-                  Image("Example")
-                        .resizable()
-                        .frame(height: .infinity)
-                        .frame(width: 350)
-                        .cornerRadius(10)
+                    if let imageUrlString = viewModel.image as? String,
+                                           let imageUrl = URL(string: imageUrlString) {
+                                            RemoteImage(imageUrl: imageUrl)
+                                                .frame(width: 350)
+                                                .cornerRadius(10)
+                                        } else {
+                                            Image("Example")
+                                                .resizable()
+                                                .frame(height: .infinity)
+                                                .frame(width: 350)
+                                                .cornerRadius(10)
+                                        }
                 }
                 
                 Spacer()

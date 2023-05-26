@@ -36,26 +36,20 @@ struct ProfileView: View {
                 Spacer()
                 
                 HStack{
-                    if let data = Data(base64Encoded: viewModel.profile.image) {
-                        if let image = UIImage(data: data) {
-                            Image(uiImage: image)
-                                .resizable()
-                                .frame(width: 90, height: 90)
-                                .clipShape(Circle())
-                                .padding(.trailing,20)
-                            
-                        } else {
-                            Image("ProfilePic")
-                                .foregroundColor(.red)
-                                .frame(width: 60, height: 60)
-                                .padding(.trailing,20)
-                        }
+                    
+                    if let imageUrlString = viewModel.profile.image as? String,
+                       let imageUrl = URL(string: imageUrlString) {
+                        RemoteImage(imageUrl: imageUrl)
+                            .frame(width: 90, height: 90)
+                            .clipShape(Circle())
+                            .padding(.trailing,20)
                     } else {
                         Image("ProfilePic")
                             .foregroundColor(.red)
                             .frame(width: 60, height: 60)
                             .padding(.trailing,20)
                     }
+
                     VStack{
                         Text(viewModel.profile.name)
                             .font(.system(size: 30))
@@ -106,6 +100,7 @@ struct ProfileView: View {
                                 userItem(event)
                                     .background(.white)
                                     .cornerRadius(15)
+                                    .padding(10)
                             }
                         }
                     }
@@ -244,9 +239,17 @@ struct ProfileView: View {
 
 private func userItem (_ event: MyEventsPresentationModel) -> some View{
     HStack {
-        Image("Food")
-            .resizable()
-            .frame(width: 90, height: 90)
+        if let imageUrlString = event.image as? String,
+                   let imageUrl = URL(string: imageUrlString) {
+                    RemoteImage(imageUrl: imageUrl)
+                        .frame(width: 90, height: 90)
+                        .scaledToFill()
+                } else {
+                    Image("food")
+                        .foregroundColor(.red)
+                        .frame(width: 90, height: 90)
+                }
+                Spacer()
         
         VStack() {
             Text(event.name)
@@ -254,6 +257,7 @@ private func userItem (_ event: MyEventsPresentationModel) -> some View{
                 .fontWeight(.bold)
                 .foregroundColor(Color("TextY"))
                 .lineLimit(1)
+                .padding(.bottom, 10)
             Text(event.description)
                 .font(.subheadline)
                 .foregroundColor(Color.black)
@@ -265,9 +269,7 @@ private func userItem (_ event: MyEventsPresentationModel) -> some View{
             
         }
         Spacer()
-        Image("logo")
-            .resizable()
-            .frame(width: 90, height: 90)
+
     }
 }
 
@@ -317,8 +319,4 @@ struct ProfilePicker: UIViewControllerRepresentable {
     }
 }
 
-//MARK: Image -> Base64
-func ImageToBase64(image: UIImage) -> String? {
-    guard let imageData = image.jpegData(compressionQuality: 0.5) else { return nil }
-    return imageData.base64EncodedString()
-}
+

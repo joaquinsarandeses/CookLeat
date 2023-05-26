@@ -21,14 +21,21 @@ struct FollowedView: View {
                     
                     //MARK: aquí tenemos la tabla donde aparece todo lo que busquemos
                     ScrollView(.vertical){
-
+                        
                         LazyVStack {
                             ForEach(viewModel.followed, id: \.uuid) { followed in
                                 NavigationLink(destination: OthersProfileView(viewModel: .init(followed: followed))) {
                                     HStack {
-                                        Image("Example")
-                                            .resizable()
-                                            .frame(width: 90, height: 90)
+                                        if let imageUrlString = followed.image as? String,
+                                           let imageUrl = URL(string: imageUrlString) {
+                                            RemoteImage(imageUrl: imageUrl)
+                                                .frame(width: 90, height: 90)
+                                        } else {
+                                            Image("Example")
+                                                .foregroundColor(.red)
+                                                .frame(width: 90, height: 90)
+                                        }
+                                        
                                         
                                         VStack() {
                                             Text(followed.name)
@@ -54,24 +61,24 @@ struct FollowedView: View {
             .onAppear(){
                 viewModel.getFollowed()
             }
-
+            
         }
-            }
+    }
     private  var navBar: some View {
-         ZStack {
-             HStack()  {
-                 Image(systemName: "arrowshape.left.fill")
-                     .resizable()
-                     .foregroundColor(Color("BackB"))
-                     .frame(width: 60, height: 45)
-                     .padding(.leading, 10)
-                 
-                 Spacer()
-             }
-         }
-         .frame(height: 50)
-         .background(Color("BackB"))
-     }
+        ZStack {
+            HStack()  {
+                Image(systemName: "arrowshape.left.fill")
+                    .resizable()
+                    .foregroundColor(Color("BackB"))
+                    .frame(width: 60, height: 45)
+                    .padding(.leading, 10)
+                
+                Spacer()
+            }
+        }
+        .frame(height: 50)
+        .background(Color("BackB"))
+    }
 }
 
 

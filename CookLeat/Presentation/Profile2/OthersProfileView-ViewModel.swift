@@ -14,7 +14,7 @@ struct OthersEventsPresentationModel: Identifiable {
     var image: String
     var description: String
     var user: String
-    var userPic: String
+    var profilePic: String
     var category: String
     
     init() {
@@ -23,7 +23,7 @@ struct OthersEventsPresentationModel: Identifiable {
         self.image = ""
         self.description = ""
         self.user = ""
-        self.userPic = ""
+        self.profilePic = ""
         self.category = ""
     }
     
@@ -33,7 +33,7 @@ struct OthersEventsPresentationModel: Identifiable {
         self.image = dataModel?.image ?? " "
         self.description = dataModel?.description ?? " "
         self.user = dataModel?.user ?? " "
-        self.userPic = dataModel?.userPic ?? " "
+        self.profilePic = dataModel?.profilePic ?? " "
         self.category = dataModel?.category ?? "Carne"
     }
 }
@@ -101,7 +101,7 @@ extension OthersProfileView{
         
         func getOtherEvents(){
             print(otherProfile.id)
-            NetworkHelper.shared.requestProvider(url: "http://127.0.0.1:8000/api/user/userRecipes/\(id)", type: .GET) { data, response, error in
+            NetworkHelper.shared.requestProvider(url: "https://4345-77-230-119-36.ngrok-free.app/api/user/userRecipes/\(id)", type: .GET) { data, response, error in
                 if let error = error {
                     print(error.localizedDescription)
                     

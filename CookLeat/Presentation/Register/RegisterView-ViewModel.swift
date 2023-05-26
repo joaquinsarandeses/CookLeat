@@ -15,7 +15,7 @@ extension RegisterView {
 
         func register(name: String,email: String, password: String) {
             
-            let url = "http://127.0.0.1:8000/api/user/registro"
+            let url = "https://4345-77-230-119-36.ngrok-free.app/api/user/registro"
             
             let dictionary: [String: Any] = [
                 "name" : name,

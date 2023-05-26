@@ -15,7 +15,7 @@ extension PostView{
         var image: String
         var description: String
         var user: String
-        var userPic: String
+        var profilePic: String
         var category: String
         
         init() {
@@ -23,7 +23,7 @@ extension PostView{
             self.image = ""
             self.description = ""
             self.user = ""
-            self.userPic = ""
+            self.profilePic = ""
             self.category = ""
         }
         
@@ -32,7 +32,7 @@ extension PostView{
             self.image = like.image
             self.description = like.description
             self.user = like.user
-            self.userPic = like.userPic
+            self.profilePic = like.profilePic
             self.category = like.category
         }
 
@@ -41,7 +41,7 @@ extension PostView{
             self.image = recent.image
             self.description = recent.description
             self.user = recent.user
-            self.userPic = recent.userPic
+            self.profilePic = recent.profilePic
             self.category = recent.category
         }
         init(event: MyEventsPresentationModel) {
@@ -49,7 +49,7 @@ extension PostView{
             self.image = event.image
             self.description = event.description
             self.user = event.user
-            self.userPic = event.userPic
+            self.profilePic = event.profilePic
             self.category = event.category
         }
         
@@ -58,7 +58,7 @@ extension PostView{
             self.image = allSearch.image
             self.description = allSearch.description
             self.user = allSearch.user
-            self.userPic = allSearch.userPic
+            self.profilePic = allSearch.profilePic
             self.category = allSearch.category
         }
         init(otherPost: OthersEventsPresentationModel) {
@@ -66,7 +66,7 @@ extension PostView{
             self.image = otherPost.image
             self.description = otherPost.description
             self.user = otherPost.user
-            self.userPic = otherPost.userPic
+            self.profilePic = otherPost.profilePic
             self.category = otherPost.category
         }
         

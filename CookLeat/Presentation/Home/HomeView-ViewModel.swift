@@ -14,7 +14,7 @@ struct LikePresentationModel: Identifiable {
     var image: String
     var description: String
     var user: String
-    var userPic: String
+    var profilePic: String
     var category: String
     
     init() {
@@ -22,7 +22,7 @@ struct LikePresentationModel: Identifiable {
         self.image = ""
         self.description = ""
         self.user = ""
-        self.userPic = ""
+        self.profilePic = ""
         self.category = ""
     }
     
@@ -31,7 +31,7 @@ struct LikePresentationModel: Identifiable {
         self.image = dataModel?.image ?? ""
         self.description = dataModel?.description ?? ""
         self.user = dataModel?.user ?? ""
-        self.userPic = dataModel?.userPic ?? ""
+        self.profilePic = dataModel?.profilePic ?? ""
         self.category = dataModel?.category ?? "Carne"
     }
 }
@@ -42,7 +42,7 @@ struct RecentPresentationModel: Identifiable {
     var image: String
     var description: String
     var user: String
-    var userPic: String
+    var profilePic: String
     var category: String
     
     init() {
@@ -50,7 +50,7 @@ struct RecentPresentationModel: Identifiable {
         self.image = ""
         self.description = ""
         self.user = ""
-        self.userPic = ""
+        self.profilePic = ""
         self.category = ""
     }
     
@@ -59,7 +59,7 @@ struct RecentPresentationModel: Identifiable {
         self.image = dataModel?.image ?? ""
         self.description = dataModel?.description ?? ""
         self.user = dataModel?.user ?? ""
-        self.userPic = dataModel?.userPic ?? ""
+        self.profilePic = dataModel?.profilePic ?? ""
         self.category = dataModel?.category ?? "Carne"
     }
 }
@@ -72,7 +72,7 @@ extension HomeView{
         
         func getRecent(){
             
-            NetworkHelper.shared.requestProvider(url: "http://127.0.0.1:8000/api/recipe/recent", type: .GET) { data, response, error in
+            NetworkHelper.shared.requestProvider(url: "https://4345-77-230-119-36.ngrok-free.app/api/recipe/recent", type: .GET) { data, response, error in
                 if let error = error {
                     print(error.localizedDescription)
                     
@@ -103,7 +103,7 @@ extension HomeView{
         
         func getLiked(){
             
-            NetworkHelper.shared.requestProvider(url: "http://127.0.0.1:8000/api/recipe/favorite/\(UserDefaults.standard.integer(forKey: "user_id"))", type: .GET) { data, response, error in
+            NetworkHelper.shared.requestProvider(url: "https://4345-77-230-119-36.ngrok-free.app/api/recipe/favorite/\(UserDefaults.standard.integer(forKey: "user_id"))", type: .GET) { data, response, error in
                 if let error = error {
                     print(error.localizedDescription)
                     

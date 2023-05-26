@@ -25,9 +25,15 @@ struct FollowersView: View {
                             ForEach(viewModel.followers, id: \.id) { cell in
                                 NavigationLink(destination: OthersProfileView(viewModel: .init(follows: cell))) {
                                     HStack {
-                                        Image("Example")
-                                            .resizable()
-                                            .frame(width: 90, height: 90)
+                                        if let imageUrlString = cell.image as? String,
+                                           let imageUrl = URL(string: imageUrlString) {
+                                            RemoteImage(imageUrl: imageUrl)
+                                                .frame(width: 90, height: 90)
+                                        } else {
+                                            Image("Example")
+                                                .foregroundColor(.red)
+                                                .frame(width: 90, height: 90)
+                                        }
                                         
                                         VStack() {
                                             Text(cell.name)
